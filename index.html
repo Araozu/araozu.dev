@@ -16,11 +16,7 @@
 
 <body>
 
-    <div
-        id="scroll-container-element"
-        class="scroll-container h-screen overflow-y-scroll"
-        autofocus
-    >
+    <div id="scroll-container-element" class="scroll-container h-screen overflow-y-scroll" autofocus>
 
         <div class="h-screen mx-auto relative">
 
@@ -47,17 +43,91 @@
                 Front-End, soon to be Back-End developer from Perú 🇵🇪
             </p>
 
-            <h2 class="font-xanh text-center text-4xl absolute w-full bottom-10">
+            <p class="font-xanh text-center text-4xl absolute w-full bottom-10">
                 What I've done over the years
                 <br>
                 <br>
                 &darr;
-            </h2>
+            </p>
 
         </div>
 
-        <div class="bg-slate-800 h-screen">
-            a
+        <div class="bg-slate-800 h-screen grid grid-cols-2">
+
+            <div class="flex justify-center flex-col">
+
+                <div class="max-w-[90%] mx-auto">
+                    <h2 class="font-xanh text-4xl">
+                        Horarios UNSA
+                    </h2>
+
+                    <p>
+                        <span>
+                            <a class="underline" href="https://horarios-v1.araozu.dev/" target="_blank">
+                                https://horarios-v1.araozu.dev/</a>
+                        </span>
+                        ·
+                        <span>
+                            <a class="underline" href="https://git.araozu.dev/fernando/horarios-v1" target="_blank">
+                                Git repo
+                            </a>
+                        </span>
+                    </p>
+
+                    <img 
+                        class="rounded-xl"
+                        src="/public/img/horarios_1.png" 
+                        alt="Image of Horarios UNSA"
+                    >
+
+                    <div class="py-4">
+                        <img class="h-12 rounded-md" src="/public/icons/js.png" alt="JS logo">
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex justify-center flex-col">
+                <p class="my-2">
+                    At my university, the schedule is a mess. We would be given images with the schedule
+                    for all the courses, and we would have to manually search & match the courses we
+                    wanted to take.
+                </p>
+                <p class="my-2">
+                    So I made a website where you could see which courses overlap, their professors,
+                    and the classrooms they were in, in a interactive table.
+                </p>
+                <p class="my-2">
+                    I made the page completely in vanilla JS, all elements & animations were created dynamically
+                    using DOM primitives. It was deployed on a free hosting service.
+                </p>
+            </div>
+
+        </div>
+
+        <div class="bg-red-950 h-screen grid grid-cols-2">
+
+            <div>
+                <h2 class="font-xanh text-2xl">
+                    PseudoSubs
+                </h2>
+            </div>
+
+            <div>
+                <p>
+                    Between 2017 & 2019 I became interested in fansubbing anime. I made a website
+                    where you could download the subtitles for the anime.
+                </p>
+                <p>
+                    The website was made in PHP, although most of the pages were static.
+                    At the time I didn't know about databases, so I made my own file based database,
+                    with a custom format in PHP.
+                </p>
+                <p>
+                    I also learned about domain names, A/AAAA/CNAME records, shared hosting &
+                    integrating with external services like analytics & disqus.
+                </p>
+            </div>
+
         </div>
 
     </div>
