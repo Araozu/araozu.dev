@@ -4,7 +4,12 @@ export default {
     "./index.html",
   ],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        xanh: ["Xanh Mono", "monospace"],
+        firamono: ["Fira Mono", "monospace"],
+      }
+    },
   },
   plugins: [],
 }
