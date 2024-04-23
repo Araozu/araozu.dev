@@ -1,0 +1,18 @@
+
+:root {
+    --c-bg: #101010;
+    --c-on-bg: #dedede;
+}
+
+@media (prefers-color-scheme: light) {
+    :root {
+        --c-bg: #f5f5f5;
+        --c-on-bg: #101010;
+    }
+}
+
+html {
+    background-color: var(--c-bg);
+    color: var(--c-on-bg);
+    font-family: Inter, sans-serif;
+}

@@ -1,0 +1,158 @@
+---
+import LangLogo from "../components/LangLogo.astro";
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="stylesheet" href="/global.css" />
+        <title>Astro</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800;900&family=Fira+Code&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            type="text/css"
+            href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
+        />
+        <script src="//unpkg.com/alpinejs" defer></script>
+    </head>
+    <body>
+        <div class="p-2">
+            <h1 class="text-xl font-light py-4">
+                Hi 👋! I'm
+                <br />
+                <span class="font-black text-3xl">Fernando Araoz</span>
+            </h1>
+            <div class="text-center">
+                <div class="inline-block w-28 h-28 rounded-full bg-slate-500">
+                </div>
+            </div>
+            <p class="text-center">
+                I'm a (human) software engineer passionate about web
+                technologies. I love building things and learning new stuff.
+            </p>
+            <div x-data="{open: true}">
+                <h2
+                    class="text-2xl font-bold mt-6 py-2 pl-2 cursor-pointer hover:underline sticky top-0 bg-c-bg border-b border-b-slate-600"
+                    @click="open = !open"
+                >
+                    Languages
+                    <i
+                        x-bind:class="open? 'ph ph-caret-down': 'ph ph-caret-right'"
+                    ></i>
+                </h2>
+                <div class="border-l border-b rounded-bl-lg border-slate-600 pt-4 pl-1 pb-2" x-show="open">
+                    <div class="grid grid-cols-[5rem_auto] gap-x-2 gap-y-4">
+                        <img
+                            class="inline-block p-2"
+                            src="/img/ts-logo.png"
+                            alt="TS logo"
+                        />
+                        <p>
+                            <span
+                                class="text-yellow-600 dark:text-yellow-400 font-medium text-lg"
+                            >
+                                JS/TS
+                            </span>
+                            : Being the lingua franca of the web, I've used a lot
+                            of JS/TS, vanilla and with frameworks.
+                        </p>
+                        <img
+                            class="inline-block p-2"
+                            src="/img/java-logo.png"
+                            alt="Java logo"
+                        />
+                        <p>
+                            <span
+                                class="text-purple-700 dark:text-purple-500 font-medium text-lg"
+                            >
+                                Java/Kotlin
+                            </span>
+                            : The language I learned in university, along with JS/TS
+                            is the language I've used the most. I've mostly written
+                            DSAs and backends with it (JSP/Spring).
+                        </p>
+                        <img
+                            class="inline-block p-2"
+                            src="/img/rust-logo.png"
+                            alt="Rust logo"
+                        />
+                        <p>
+                            <span
+                                class="text-amber-800 dark:text-amber-600 font-medium text-lg"
+                            >
+                                Rust
+                            </span>
+                            : Currently my favorite language, I began learning it
+                            in late 2022. I've written a backend and I'm currently
+                            writing a programming language.
+                        </p>
+                        <img
+                            class="inline-block p-2"
+                            src="/img/go-logo.png"
+                            alt="Go logo"
+                        />
+                        <p>
+                            <span
+                                class="text-sky-600 dark:text-sky-400 font-medium text-lg"
+                            >
+                                Go
+                            </span>
+                            : I'm currently learning Go through advent of code, and
+                            I hope to use it for some projects in the future.
+                        </p>
+                    </div>
+
+                    <p class="my-4">
+                        <span class="font-medium text-lg">Others</span>: Other
+                        languages I've used (mostly at uni):
+                        <br />
+                        <div class="text-center">
+                            <LangLogo href="https://www.iso.org/standard/74528.html" lang="C" icon="c" />
+                            <LangLogo href="https://isocpp.org/std/the-standard" lang="C++" icon="cpp" />
+                            <LangLogo href="https://learn.microsoft.com/en-us/dotnet/csharp/" lang="Microsoft Java" icon="c-sharp" />
+                            <LangLogo href="https://www.php.net/" lang="PHP" icon="php" />
+                            <LangLogo href="https://www.python.org/" lang="Python" icon="python" />
+                            <LangLogo href="https://dart.dev/" lang="Dart" icon="dart" />
+                        </div>
+                        <br />
+                        Other languages I've tried for fun:
+                        <br />
+                        <div class="text-center">
+                            <LangLogo href="https://elixir-lang.org/" lang="Elixir" icon="elixir" />
+                            <LangLogo href="https://www.erlang.org/" lang="Erlang" icon="erlang" />
+                            <LangLogo href="https://gleam.run/" lang="Gleam" icon="gleam" />
+                            <LangLogo href="https://coffeescript.org/" lang="CoffeeScript" icon="coffeescript" />
+                            <LangLogo href="https://racket-lang.org/" lang="Racket" icon="racket" />
+                            <LangLogo href="https://ziglang.org/" lang="Zig" icon="zig" />
+                            <LangLogo href="https://learn.microsoft.com/en-us/dotnet/fsharp/what-is-fsharp" lang="F#" icon="f-sharp" />
+                            <LangLogo href="https://www.haskell.org/" lang="Haskell" icon="haskell" />
+                            <LangLogo href="https://ocaml.org/" lang="OCaml" icon="ocaml" />
+                            <LangLogo href="https://rescript-lang.org/" lang="Rescript" icon="rescript" />
+                            <LangLogo href="https://www.swift.org/" lang="Swift" icon="swift" />
+                            <LangLogo href="https://www.scala-lang.org/" lang="Scala" icon="scala" />
+                            <LangLogo href="https://clojure.org/" lang="Clojure" icon="clojure" />
+                            <LangLogo href="https://www.gnu.org/software/bash/" lang="Bash" icon="bash" />
+                            <LangLogo href="https://www.lua.org/" lang="Lua" icon="lua" />
+                        </div>
+                    </p>
+                    <p>
+                        In general I like to try new languages, explore new
+                        concepts and see new ways to solve problems.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

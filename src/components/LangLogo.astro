@@ -1,0 +1,12 @@
+---
+const { lang, icon, href } = Astro.props;
+---
+
+<a href={href} target="_blank">
+    <img
+        class="inline-block h-8 px-1 my-1"
+        src={`/img/${icon}-logo.svg`}
+        alt={`${lang} logo`}
+        title={`${lang} logo`}
+    />
+</a>
