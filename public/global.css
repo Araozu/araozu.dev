@@ -2,12 +2,16 @@
 :root {
     --c-bg: #101010;
     --c-on-bg: #dedede;
+
+    --c-bg-2: #18181b;
 }
 
 @media (prefers-color-scheme: light) {
     :root {
         --c-bg: #f5f5f5;
         --c-on-bg: #101010;
+        
+        --c-bg-2: white;
     }
 }
 

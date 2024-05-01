@@ -6,6 +6,7 @@ export default {
 			colors: {
 				'c-bg': 'var(--c-bg)',
 				'c-on-bg': 'var(--c-on-bg)',
+				'c-bg-2': 'var(--c-bg-2)',
 			},
 		},
 	},
