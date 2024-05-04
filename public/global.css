@@ -18,5 +18,9 @@
 html {
     background-color: var(--c-bg);
     color: var(--c-on-bg);
-    font-family: Inter, sans-serif;
+}
+
+body {
+    font-family: "JetBrains Mono", monospace;
+    font-optical-sizing: auto;
 }

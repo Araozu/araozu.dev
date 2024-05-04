@@ -15,11 +15,7 @@ import Card from "../components/Card.astro";
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
-            href="https://fonts.googleapis.com/css2?family=Fira+Sans:wght@400;500;600;700;800;900&family=Fira+Code&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
             rel="stylesheet"
         />
         <link
@@ -30,9 +26,9 @@ import Card from "../components/Card.astro";
         <script src="//unpkg.com/alpinejs" defer></script>
     </head>
     <body>
-        <div class="p-2 lg:grid lg:grid-cols-[20rem_auto] lg:gap-4">
+        <div class="container mx-auto p-2 lg:grid lg:grid-cols-[20rem_auto] lg:gap-4">
             <Sidebar />
-            <div class="2xl:grid 2xl:grid-cols-2 2xl:gap-2">
+            <div>
                 <Card title="Languages">
                     <div class="grid grid-cols-[5rem_auto] gap-x-2 gap-y-4">
                         <img
