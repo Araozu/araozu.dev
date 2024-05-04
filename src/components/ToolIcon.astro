@@ -1,0 +1,26 @@
+---
+const { name, icon, href, size } = Astro.props;
+
+let tailwindSize = "h-8";
+
+if (size === "big") {
+    tailwindSize = "h-24";
+} else if (size === "medium") {
+    tailwindSize = "h-16";
+}
+---
+
+<a
+    href={href}
+    target="_blank"
+    class="inline-block py-2 px-2 hover:bg-zinc-200 dark:hover:bg-zinc-800 transition-colors rounded text-center"
+>
+    <img
+        class={`"inline-block ${tailwindSize} px-1 my-1"`}
+        src={`/img/tools/${icon}.svg`}
+        alt={`${name} logo`}
+        title={`${name} logo`}
+    />
+    <br />
+    <span class="font-bold">{name}</span>
+</a>
