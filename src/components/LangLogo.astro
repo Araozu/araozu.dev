@@ -1,12 +1,13 @@
 ---
-const { lang, icon, href } = Astro.props;
+const { lang, icon, size, alpineOnClick } = Astro.props;
 ---
 
-<a href={href} target="_blank">
+<button >
     <img
-        class="inline-block h-8 px-1 my-1"
+        @click={alpineOnClick}
+        class={"inline-block " + (size? size: "h-8") + " px-1 my-1"}
         src={`/img/${icon}-logo.svg`}
         alt={`${lang} logo`}
         title={`${lang} logo`}
     />
-</a>
+</button>
