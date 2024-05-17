@@ -1,10 +1,3 @@
----
-import Sidebar from "../components/Sidebar.astro";
-import Languages from "../components/index/Languages.astro";
-import Learning from "../components/index/Learning.astro";
-import Tools from "../components/index/Tools.astro";
----
-
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -12,7 +5,7 @@ import Tools from "../components/index/Tools.astro";
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <link rel="stylesheet" href="/global.css" />
-        <title>Fernando Araoz</title>
+        <title>Fernando Araoz - Blog</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -27,15 +20,6 @@ import Tools from "../components/index/Tools.astro";
         <script src="//unpkg.com/alpinejs" defer></script>
     </head>
     <body>
-        <div
-            class="container mx-auto p-2 lg:grid lg:grid-cols-[20rem_auto] lg:gap-4"
-        >
-            <Sidebar />
-            <div>
-                <Languages />
-                <Learning />
-                <Tools />
-            </div>
-        </div>
+        <slot />
     </body>
 </html>

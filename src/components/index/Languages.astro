@@ -31,6 +31,14 @@ import ToolIcon from "../ToolIcon.astro";
         </div>
 
         <div class="py-4 md:px-16">
+            <div
+                class="text-center table h-32 w-full"
+                x-show="active_tab === ''"
+            >
+                <div class="table-cell align-middle">
+                    &darr; Click one &uarr;
+                </div>
+            </div>
             <div x-show="active_tab === 'ts'">
                 I've used JS/TS since my first year at uni. I've written a lot
                 of small pages, with either vanilla JS or frameworks in the
@@ -68,14 +76,6 @@ import ToolIcon from "../ToolIcon.astro";
             <div x-show="active_tab === 'php'">
                 I've used PHP at work, to mantain & update legacy websites, and
                 to create a REST API along with a React frontend.
-            </div>
-            <div
-                class="text-center table h-32 w-full"
-                x-show="active_tab === ''"
-            >
-                <div class="table-cell align-middle">
-                    &darr; Click one &uarr;
-                </div>
             </div>
         </div>
         <p class="my-4">
@@ -117,6 +117,12 @@ import ToolIcon from "../ToolIcon.astro";
             <br />
             <div class="text-center">
                 <LangLogo
+                    href="https://go.dev/"
+                    lang="Go"
+                    icon="go"
+                />
+                <LangLogo href="https://ziglang.org/" lang="Zig" icon="zig" />
+                <LangLogo
                     href="https://elixir-lang.org/"
                     lang="Elixir"
                     icon="elixir"
@@ -137,7 +143,6 @@ import ToolIcon from "../ToolIcon.astro";
                     lang="Racket"
                     icon="racket"
                 />
-                <LangLogo href="https://ziglang.org/" lang="Zig" icon="zig" />
                 <LangLogo
                     href="https://learn.microsoft.com/en-us/dotnet/fsharp/what-is-fsharp"
                     lang="F#"

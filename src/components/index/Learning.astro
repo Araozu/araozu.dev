@@ -1,7 +1,21 @@
 ---
 import Card from "../Card.astro";
+import ToolIcon from "../ToolIcon.astro";
 ---
 
 <Card title="I'm learning">
-    a
+    <div class="flex justify-evenly">
+        <ToolIcon
+            isRoot={true}
+            name="Zig"
+            icon="zig-logo"
+            size="big"
+        />
+        <ToolIcon
+            isRoot={true}
+            name="Go"
+            icon="go-logo"
+            size="big"
+        />
+    </div>
 </Card>
