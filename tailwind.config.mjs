@@ -8,6 +8,9 @@ export default {
 				'c-on-bg': 'var(--c-on-bg)',
 				'c-bg-2': 'var(--c-bg-2)',
 			},
+            fontFamily: {
+                "etoile": ["'Iosevka Etoile Web'", "serif"],
+            }
 		},
 	},
 	plugins: [

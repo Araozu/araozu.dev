@@ -1,3 +1,8 @@
+---
+const { frontmatter } = Astro.props;
+---
+
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -5,7 +10,8 @@
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <link rel="stylesheet" href="/global.css" />
-        <title>Fernando Araoz - Blog</title>
+        <link rel="stylesheet" href="/blog.css" />
+        <title>Blog - Fernando Araoz</title>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -19,7 +25,32 @@
         />
         <script src="//unpkg.com/alpinejs" defer></script>
     </head>
-    <body>
-        <slot />
+    <body style="font-size: 20px;">
+        <div id="blog" class="container mx-auto max-w-[1000px]">
+            <div
+                class="font-etoile text-3xl text-center py-16 font-bold dark:bg-c-bg-2 text-c-on-bg my-4 rounded hover:underline hover:cursor-help"
+            >
+                Fernando Araoz: le ブログ
+            </div>
+
+            <div class="py-6">
+                {
+                    frontmatter?.title && (
+                        <h1 class="font-etoile text-center text-2xl py-2">
+                            {frontmatter.title}
+                        </h1>
+                    )
+                }
+                {
+                    frontmatter?.pubDate && (
+                        <p class="text-center text-sm">
+                            Published: {frontmatter.pubDate}
+                        </p>
+                    )
+                }
+            </div>
+
+            <slot />
+        </div>
     </body>
 </html>

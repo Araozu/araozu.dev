@@ -17,6 +17,15 @@
 	src: url('/Iosevka/Bold.woff2') format('woff2');
 }
 
+@font-face {
+	font-family: 'Iosevka Etoile Web';
+	font-display: swap;
+	font-weight: 900;
+	font-stretch: normal;
+	font-style: normal;
+	src: url('/IosevkaEtoile/Heavy.woff2') format('woff2');
+}
+
 :root {
     --c-bg: #101010;
     --c-on-bg: #dedede;
