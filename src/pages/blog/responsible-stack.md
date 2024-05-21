@@ -170,11 +170,11 @@ Do you know who I am? I'm the man who is going to BURN your house DOWN! With the
 React. I'm gonna get my engineers to invent a combustible RUST FRAMEWORK
 that BURNS your house DOWN!
 
----
-
 So I began working with Rust.
 
-A month later I was let go. Good luck Edith, I hope you like low level languages.
+---
+
+And then I was let go after a month. Good luck Edith, I hope you like learning low level languages.
 
 
 
