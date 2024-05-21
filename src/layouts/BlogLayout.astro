@@ -24,19 +24,27 @@ const { frontmatter } = Astro.props;
             href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
         />
         <script src="//unpkg.com/alpinejs" defer></script>
+        
+        <style>
+            html {
+                font-size: 18px;
+            }
+        </style>
     </head>
-    <body style="font-size: 20px;">
+    <body>
         <div id="blog" class="container mx-auto max-w-[1000px]">
-            <div
-                class="font-etoile text-3xl text-center py-16 font-bold dark:bg-c-bg-2 text-c-on-bg my-4 rounded hover:underline hover:cursor-help"
+            <a
+                class="font-etoile text-3xl text-center py-10 font-bold dark:bg-c-bg-2 text-c-on-bg my-4 rounded 
+                    inline-block w-full hover:underline cursor-pointer"
+                href="/"
             >
                 Fernando Araoz: le ブログ
-            </div>
+            </a>
 
             <div class="py-6">
                 {
                     frontmatter?.title && (
-                        <h1 class="font-etoile text-center text-2xl py-2">
+                        <h1 class="font-etoile text-center text-4xl py-2">
                             {frontmatter.title}
                         </h1>
                     )
@@ -48,9 +56,27 @@ const { frontmatter } = Astro.props;
                         </p>
                     )
                 }
+                {
+                    frontmatter?.image && (
+                        <figure>
+                            <img
+                                class="dark:opacity-70 rounded pt-8"
+                                src={frontmatter.image.url}
+                                alt={frontmatter.image.alt}
+                            />
+                            <figcaption class="text-xs text-center pt-2 pb-8 opacity-75">
+                                {frontmatter.image.caption}
+                            </figcaption>
+                        </figure>
+                    )
+                }
             </div>
 
-            <slot />
+            <div class="text-base">
+                <slot />
+            </div>
+
+            <div class="min-h-40"></div>
         </div>
     </body>
 </html>

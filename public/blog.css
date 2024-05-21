@@ -1,0 +1,29 @@
+
+#blog code {
+    font-family: "Iosevka Fixed Web", Iosevka, monospace;
+    border: solid 1px var(--c-on-bg);
+    padding: 0 0.25rem;
+    border-radius: 0.25rem;
+}
+
+#blog p {
+    margin: 1rem 0;
+}
+
+#blog h2 {
+    font-size: 1.5rem;
+    font-family: "Iosevka Etoile Web", serif;
+    font-weight: 900;
+    margin-top: 3rem;
+    margin-bottom: 1.5rem;
+}
+
+#blog li {
+    list-style-type: circle;
+    margin: 0.5rem 0;
+}
+
+#blog a {
+    text-decoration: underline;
+    color: #3b82f6;
+}
