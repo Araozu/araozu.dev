@@ -31,6 +31,8 @@
     --c-on-bg: #dedede;
 
     --c-bg-2: #18181b;
+    --c-border-1: transparent;
+    --c-border-2: #606060;
 }
 
 @media (prefers-color-scheme: light) {
@@ -39,6 +41,8 @@
         --c-on-bg: #101010;
 
         --c-bg-2: white;
+        --c-border-1: #aaaaaa;
+        --c-border-2: #aaaaaa;
     }
 }
 
