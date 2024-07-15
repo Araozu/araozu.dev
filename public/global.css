@@ -26,6 +26,16 @@
 	src: url('/IosevkaEtoile/Heavy.woff2') format('woff2');
 }
 
+/* Iosevka from Xe Iaso: https://xeiaso.net/ https://github.com/Xe/iosevka  */
+@font-face {
+    font-family: "Iosevka Iaso";
+    font-display: swap;
+    font-weight: 400;
+    font-stretch: normal;
+    font-style: normal;
+    src: url("/IosevkaIaso/Regular.woff2") format("woff2");
+}
+
 :root {
     --c-bg: #101010;
     --c-on-bg: #dedede;
@@ -52,6 +62,6 @@ html {
 }
 
 body {
-    font-family: "Iosevka Fixed Web", "Iosevka Nerd Font", "Iosevka", monospace;
+    font-family: "Iosevka Iaso", "Iosevka Fixed Web", sans-serif;
     font-optical-sizing: auto;
 }

@@ -1,5 +1,6 @@
 ---
-const { frontmatter, lang } = Astro.props;
+let { frontmatter, lang } = Astro.props;
+lang = lang ?? "en";
 ---
 
 <!doctype html>
@@ -38,9 +39,10 @@ const { frontmatter, lang } = Astro.props;
                     class="fixed top-0 left-0 bg-black text-white rotate-[-90deg] font-display w-[100vh] translate-y-[100vh] px-8 py-2"
                     style="transform-origin: 0% 0%;"
                 >
-                    <a class="font-semibold inline-block text-2xl hover:underline" href={"/blog/" + lang}>
+                    <a class="font-semibold inline-block text-2xl hover:underline" href="/">
                         Fernando Araoz
                     </a>
+                    <a class="ml-6 inline-block hover:underline" href="/side-projects">Side projects</a>
                     <a class="ml-6 inline-block hover:underline" href="/blog/en">Eng Blog</a>
                     <a class="ml-6 inline-block hover:underline" href="/blog/es">Es Blog</a>
                 </nav>
