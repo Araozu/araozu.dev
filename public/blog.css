@@ -9,7 +9,7 @@ pre.astro-code {
     padding: 1rem;
     border-radius: 0.5rem;
     border: solid 1px var(--c-border-1);
-    font-size: 0.9rem;
+    font-size: 0.8rem;
 }
 
 pre.astro-code>code {
@@ -47,6 +47,17 @@ pre.astro-code>code .line::before {
 #blog a {
     text-decoration: underline;
     color: #3b82f6;
+}
+
+#blog img {
+    max-height: 400px;
+}
+
+#blog blockquote {
+    border-left: 5px solid var(--c-border-1);
+    padding-left: 1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
 }
 
 @media (prefers-color-scheme: dark) {
