@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayout.astro
 title: Golang first impressions
 description: First thoughts after using a little bit of Golang
 pubDate: "2024-05-25"

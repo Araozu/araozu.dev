@@ -10,6 +10,7 @@ export default {
 			},
             fontFamily: {
                 "etoile": ["'Iosevka Etoile Web'", "serif"],
+                "display": ["'Outfit'", "sans-serif"],
             }
 		},
 	},

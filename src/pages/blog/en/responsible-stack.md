@@ -1,5 +1,5 @@
 ---
-layout: ../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayout.astro
 title: The responsible tech stack
 description: tech stack
 pubDate: "2024-05-20"
