@@ -1,26 +1,31 @@
 ---
 import BlogLayout from "../../../layouts/BlogLayout.astro";
+
+const allPosts = await Astro.glob("./*.md");
 ---
 
 <BlogLayout>
-    <h1>Blog index, WIP</h1>
-
-    <p>Some day there will be a procedurally generated list of pages here!</p>
-
-    <p>Until then:</p>
-
-    <p>Posts:</p>
+    <p>
+        My thoughts on many tech things, on english. This content may (will)
+        differ from what I wrote in Spanish.
+    </p>
 
     <ul>
-        <li>
-            <a class="underline" href="/blog/en/responsible-stack/">
-                The responsible stack
-            </a>
-        </li>
-        <li>
-            <a class="underline" href="/blog/en/go-1/">
-                Golang first impressions
-            </a>
-        </li>
+        {
+            allPosts
+                .toSorted((x, y) =>
+                    x.frontmatter.pubDate > y.frontmatter.pubDate ? -1 : 1,
+                )
+                .map((post) => {
+                    return (
+                        <li>
+                            {post.frontmatter.pubDate} -
+                            <a class="underline" href={post.url}>
+                                {post.frontmatter.title}
+                            </a>
+                        </li>
+                    );
+                })
+        }
     </ul>
 </BlogLayout>

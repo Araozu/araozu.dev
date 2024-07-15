@@ -10,11 +10,11 @@ image:
     caption: ThePrimeagen & Theo, as depicted by the author.
 ---
 
-> TLDR: There's a theoretical "responsible" tech stack that would
-> ...
+> TL;DR: There's a theoretical "responsible" tech stack that would
+> minimize expenses for a company building a product.
 
 At my first job I worked at a small shop, as "the computer guy". I did
-everything, from converting word files to `pdf`, to mantain 10 years old
+everything, from converting word files to `pdf` to mantaining 10 years old
 legacy PHP webpages, to implementing internal systems.
 I was the only IT guy, there were around 5-10 call center people and
 the boss only came like 3 times a week.

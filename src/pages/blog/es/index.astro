@@ -1,24 +1,32 @@
 ---
 import BlogLayout from "../../../layouts/BlogLayout.astro";
+
+const allPosts = await Astro.glob("./*.md");
 ---
 
 <BlogLayout lang="es">
-    <h1>Blog en Español</h1>
-
-    <p>Carita feliz :D</p>
-
-    <p>Posts:</p>
+    <p>
+        Pienso, therefore escribo un blog post en español.
+        <br>
+        Estos post son diferentes a lo que escribo en ingles.
+    </p>
 
     <ul>
-        <li>
-            <a class="underline" href="/blog/responsible-stack/">
-                The responsible stack
-            </a>
-        </li>
-        <li>
-            <a class="underline" href="/blog/go-1/">
-                Golang first impressions
-            </a>
-        </li>
+        {
+            allPosts
+                .toSorted((x, y) =>
+                    x.frontmatter.pubDate > y.frontmatter.pubDate ? -1 : 1,
+                )
+                .map((post) => {
+                    return (
+                        <li>
+                            {post.frontmatter.pubDate} -
+                            <a class="underline" href={post.url}>
+                                {post.frontmatter.title}
+                            </a>
+                        </li>
+                    );
+                })
+        }
     </ul>
 </BlogLayout>
