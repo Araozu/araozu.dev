@@ -1,3 +1,8 @@
+---
+import GithubIcon from "../../components/Sideprojects/GithubIcon.astro";
+import GlobeIcon from "../../components/Sideprojects/GlobeIcon.astro";
+---
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -60,24 +65,29 @@
                     </a>
                 </nav>
             </div>
-            <!-- For some god forsaken reason this grid-cols doesnt
-             work?? Hello?? Tailwind??? -->
             <div class="grid grid-cols-[30rem_auto] gap-2">
-                <div class="fler items-center">
+                <div class="flex items-center">
                     <div class="bg-c-bg-2 my-4 rounded p-4 dark:shadow-black shadow">
                         <h1 class="font-display font-semibold text-xl text-center">
-                            Nombre del proyecto :D
+                            Typed Hyperscript Processor (webpage)
                         </h1>
 
-                        <p class="pt-8">
-                            Descripción del proyecto :D (carita feliz)
-                            en 240 palabras o menos
+                        <p class="pt-8 text-sm">
+                            This is a static webpage that contains documentation
+                            for my other project, the THP compiler.
+                            <br>
+                            <br>
+                            It is written with Astro and Markdown, highlights
+                            the syntax in the code snippets using said compiler,
+                            and has some interactive code snippets.
                         </p>
 
                         <div class="pt-8">
-                            <a href="" class="underline">Git repo link</a>
+                            <GithubIcon color="var(--c-on-bg)" />
+                            <a href="https://git.araozu.dev/fernando/araozu.dev" class="underline">Source code</a>
                             <br>
-                            <a href="" class="underline">https://webpage.araozu.dev/</a>
+                            <GlobeIcon color="var(--c-on-bg)" />
+                            <a href="https://thp.araozu.dev/" target="_blank" class="underline">https://thp.araozu.dev/</a>
                         </div>
 
                         <div class="pt-8">
@@ -87,7 +97,11 @@
                 </div>
 
                 <div class="w-full h-screen flex items-center justify-center p-16">
-                    <img src="/img/projects/thp/01.png" alt="Project image">
+                    <img
+                        class="inline-block shadow-sm dark:shadow-black rounded"
+                        src="/img/projects/thp/01.png"
+                        alt="Project image"
+                    />
                 </div>
             </div>
         </div>
