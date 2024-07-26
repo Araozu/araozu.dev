@@ -39,6 +39,14 @@ pre.astro-code>code .line::before {
     margin-bottom: 1.5rem;
 }
 
+#blog h3 {
+    font-size: 1.25rem;
+    font-family: "Iosevka Etoile Web", serif;
+    font-weight: 900;
+    margin-top: 2.25rem;
+    margin-bottom: 1.5rem;
+}
+
 #blog li {
     list-style-type: circle;
     margin: 0.5rem 0;
@@ -51,6 +59,11 @@ pre.astro-code>code .line::before {
 
 #blog img {
     max-height: 400px;
+    display: inline-block;
+}
+
+#blog p:has(> img) {
+    text-align: center;
 }
 
 #blog blockquote {

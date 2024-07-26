@@ -39,12 +39,22 @@ lang = lang ?? "en";
                     class="fixed top-0 left-0 bg-black text-white rotate-[-90deg] font-display w-[100vh] translate-y-[100vh] px-8 py-2"
                     style="transform-origin: 0% 0%;"
                 >
-                    <a class="font-semibold inline-block text-2xl hover:underline" href="/">
+                    <a
+                        class="font-semibold inline-block text-2xl hover:underline"
+                        href="/"
+                    >
                         Fernando Araoz
                     </a>
-                    <a class="ml-6 inline-block hover:underline" href="/side-projects">Side projects</a>
-                    <a class="ml-6 inline-block hover:underline" href="/blog/en">Eng Blog</a>
-                    <a class="ml-6 inline-block hover:underline" href="/blog/es">Es Blog</a>
+                    <a
+                        class="ml-6 inline-block hover:underline"
+                        href="/side-projects">Side projects</a
+                    >
+                    <a class="ml-6 inline-block hover:underline" href="/blog/en"
+                        >Eng Blog</a
+                    >
+                    <a class="ml-6 inline-block hover:underline" href="/blog/es"
+                        >Es Blog</a
+                    >
                 </nav>
             </div>
             <div id="blog" class="container mx-auto max-w-[1000px]">
@@ -66,11 +76,13 @@ lang = lang ?? "en";
                     {
                         frontmatter?.image && (
                             <figure>
-                                <img
-                                    class="dark:opacity-70 rounded pt-8"
-                                    src={frontmatter.image.url}
-                                    alt={frontmatter.image.alt}
-                                />
+                                <div class="text-center">
+                                    <img
+                                        class="dark:opacity-70 rounded pt-8 inline-block"
+                                        src={frontmatter.image.url}
+                                        alt={frontmatter.image.alt}
+                                    />
+                                </div>
                                 <figcaption class="text-xs text-center pt-2 pb-8 opacity-75">
                                     {frontmatter.image.caption}
                                 </figcaption>
