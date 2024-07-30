@@ -91,9 +91,9 @@ programación se implementa en sí mismo. Curioso, y confuso.
 Poniendo como ejemplo el lenguaje C:
 
 1. Primero se crea un compilador para C en cualquier lenguaje
-    [(C se implementó inicialmente en B)](https://www.bell-labs.com/usr/dmr/www/chist.html).
+    [(C se implementó inicialmente en BCPL)](https://www.bell-labs.com/usr/dmr/www/chist.html).
 2. Ahora que tenemos un compilador de C capaz de crear programas
-    nuevos (escrito en B), crearemos el siguiente programa:
+    nuevos (escrito en BCPL), crearemos el siguiente programa:
     un compilador de C.
 3. Una vez que terminamos de escribir el compilador de C, en C,
     listo. Tenemos un lenguaje de programación escrito en sí mismo.
