@@ -13,13 +13,16 @@ importers:
         version: 0.5.10(typescript@5.5.3)
       '@astrojs/mdx':
         specifier: ^3.1.2
-        version: 3.1.2(astro@4.11.5(typescript@5.5.3))
+        version: 3.1.2(astro@4.11.5(@types/node@22.3.0)(typescript@5.5.3))
       '@astrojs/tailwind':
         specifier: ^5.1.0
-        version: 5.1.0(astro@4.11.5(typescript@5.5.3))(tailwindcss@3.4.5)
+        version: 5.1.0(astro@4.11.5(@types/node@22.3.0)(typescript@5.5.3))(tailwindcss@3.4.5)
+      '@types/node':
+        specifier: ^22.3.0
+        version: 22.3.0
       astro:
         specifier: ^4.11.5
-        version: 4.11.5(typescript@5.5.3)
+        version: 4.11.5(@types/node@22.3.0)(typescript@5.5.3)
       tailwindcss:
         specifier: ^3.4.5
         version: 3.4.5
@@ -638,6 +641,9 @@ packages:
 
   '@types/nlcst@2.0.3':
     resolution: {integrity: sha512-vSYNSDe6Ix3q+6Z7ri9lyWqgGhJTmzRjZRqyq15N0Z/1/UnVsno9G/N40NBijoYx2seFDIl0+B2mgAb9mezUCA==}
+
+  '@types/node@22.3.0':
+    resolution: {integrity: sha512-nrWpWVaDZuaVc5X84xJ0vNrLvomM205oQyLsRt7OHNZbSHslcWsvgFR7O7hire2ZonjLrWBbedmotmIlJDVd6g==}
 
   '@types/unist@2.0.10':
     resolution: {integrity: sha512-IfYcSBWE3hLpBg8+X2SEa8LVkJdJEkT2Ese2aaLs3ptGdVtABxndrMaxuFlQ1qdFf9Q5rDvDpxI3WwgvKFAsQA==}
@@ -1975,6 +1981,9 @@ packages:
     engines: {node: '>=14.17'}
     hasBin: true
 
+  undici-types@6.18.2:
+    resolution: {integrity: sha512-5ruQbENj95yDYJNS3TvcaxPMshV7aizdv/hWYjGIKoANWKjhWNBsr2YEuYZKodQulB1b8l7ILOuDQep3afowQQ==}
+
   unified@11.0.5:
     resolution: {integrity: sha512-xKvGhPWw3k84Qjh8bI3ZeJjqnyadK+GEFtazSfZv/rKeTkTjOJho6mFqh2SM96iIcZokxiOpg78GazTSg8+KHA==}
 
@@ -2282,12 +2291,12 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@astrojs/mdx@3.1.2(astro@4.11.5(typescript@5.5.3))':
+  '@astrojs/mdx@3.1.2(astro@4.11.5(@types/node@22.3.0)(typescript@5.5.3))':
     dependencies:
       '@astrojs/markdown-remark': 5.1.1
       '@mdx-js/mdx': 3.0.1
       acorn: 8.12.1
-      astro: 4.11.5(typescript@5.5.3)
+      astro: 4.11.5(@types/node@22.3.0)(typescript@5.5.3)
       es-module-lexer: 1.5.4
       estree-util-visit: 2.0.0
       github-slugger: 2.0.0
@@ -2307,9 +2316,9 @@ snapshots:
     dependencies:
       prismjs: 1.29.0
 
-  '@astrojs/tailwind@5.1.0(astro@4.11.5(typescript@5.5.3))(tailwindcss@3.4.5)':
+  '@astrojs/tailwind@5.1.0(astro@4.11.5(@types/node@22.3.0)(typescript@5.5.3))(tailwindcss@3.4.5)':
     dependencies:
-      astro: 4.11.5(typescript@5.5.3)
+      astro: 4.11.5(@types/node@22.3.0)(typescript@5.5.3)
       autoprefixer: 10.4.19(postcss@8.4.39)
       postcss: 8.4.39
       postcss-load-config: 4.0.2(postcss@8.4.39)
@@ -2834,6 +2843,10 @@ snapshots:
     dependencies:
       '@types/unist': 3.0.2
 
+  '@types/node@22.3.0':
+    dependencies:
+      undici-types: 6.18.2
+
   '@types/unist@2.0.10': {}
 
   '@types/unist@3.0.2': {}
@@ -2943,7 +2956,7 @@ snapshots:
 
   astring@1.8.6: {}
 
-  astro@4.11.5(typescript@5.5.3):
+  astro@4.11.5(@types/node@22.3.0)(typescript@5.5.3):
     dependencies:
       '@astrojs/compiler': 2.8.2
       '@astrojs/internal-helpers': 0.4.1
@@ -3001,8 +3014,8 @@ snapshots:
       tsconfck: 3.1.1(typescript@5.5.3)
       unist-util-visit: 5.0.0
       vfile: 6.0.1
-      vite: 5.3.3
-      vitefu: 0.2.5(vite@5.3.3)
+      vite: 5.3.3(@types/node@22.3.0)
+      vitefu: 0.2.5(vite@5.3.3(@types/node@22.3.0))
       which-pm: 2.2.0
       yargs-parser: 21.1.1
       zod: 3.23.8
@@ -4656,6 +4669,8 @@ snapshots:
 
   typescript@5.5.3: {}
 
+  undici-types@6.18.2: {}
+
   unified@11.0.5:
     dependencies:
       '@types/unist': 3.0.2
@@ -4736,17 +4751,18 @@ snapshots:
       unist-util-stringify-position: 4.0.0
       vfile-message: 4.0.2
 
-  vite@5.3.3:
+  vite@5.3.3(@types/node@22.3.0):
     dependencies:
       esbuild: 0.21.5
       postcss: 8.4.39
       rollup: 4.18.1
     optionalDependencies:
+      '@types/node': 22.3.0
       fsevents: 2.3.3
 
-  vitefu@0.2.5(vite@5.3.3):
+  vitefu@0.2.5(vite@5.3.3(@types/node@22.3.0)):
     optionalDependencies:
-      vite: 5.3.3
+      vite: 5.3.3(@types/node@22.3.0)
 
   volar-service-css@0.0.59(@volar/language-service@2.4.0-alpha.16):
     dependencies:

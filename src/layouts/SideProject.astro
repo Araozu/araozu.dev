@@ -1,9 +1,15 @@
 ---
+import {readdirSync} from "node:fs";
 import GithubIcon from "../components/Sideprojects/GithubIcon.astro";
 import GlobeIcon from "../components/Sideprojects/GlobeIcon.astro";
 import NavigationLayout from "./NavigationLayout.astro";
 
-const { project_title, git_url, page_url, previous, next } = Astro.props;
+const { project_title, git_url, page_url, previous, next, images_folder } = Astro.props;
+
+const images_base = "/img/projects/";
+const images = readdirSync(`./public${images_base}${images_folder}/`)
+    .map((s) => `${images_base}${images_folder}/${s}`);
+const images_str = JSON.stringify(images);
 ---
 
 <!doctype html>
@@ -70,16 +76,16 @@ const { project_title, git_url, page_url, previous, next } = Astro.props;
                     <div class="grid grid-cols-2 w-full gap-6">
                         <a
                             class={`inline-block w-full bg-c-bg-2 rounded p-4 shadow shadow-zinc-500
-                                 dark:shadow-black transition-colors 
-                                ${previous? "hover:bg-zinc-300": "opacity-50 cursor-default"}`}
+                                 dark:shadow-black transition-colors
+                                ${previous? "hover:bg-zinc-300 dark:hover:bg-zinc-800": "opacity-50 cursor-default"}`}
                             href={previous? `/side-projects/${previous}` : `#`}
                         >
                             &larr; <span class="underline">Previous project</span>
                         </a>
                         <a
                             class={`inline-block w-full bg-c-bg-2 rounded p-4 shadow shadow-zinc-500
-                                 dark:shadow-black transition-colors 
-                                ${next? "hover:bg-zinc-300": "opacity-50 cursor-default"}`}
+                                 dark:shadow-black transition-colors text-right
+                                ${next? "hover:bg-zinc-300 dark:hover:bg-zinc-800": "opacity-50 cursor-default"}`}
                             href={next? `/side-projects/${next}` : `#`}
                         >
                             <span class="underline">Next project</span> &rarr;
@@ -88,11 +94,30 @@ const { project_title, git_url, page_url, previous, next } = Astro.props;
                 </div>
 
                 <div
-                    class="w-full h-screen flex items-center justify-center p-16"
+                    class="relative w-full h-screen flex items-center justify-center p-16"
+                    x-data={`{img: ${images_str}, img_len: ${images.length}, idx: 0}`}
                 >
+                    <button 
+                        class="absolute left-12 top-[50%] bg-zinc-800 border border-zinc-950
+                            rounded py-1 px-2 text-2xl not:disabled:hover:bg-zinc-700 transition-all
+                            disabled:opacity-50"
+                        x-bind:disabled="idx === 0"
+                        x-on:click="idx -= 1"
+                    >
+                        &larr;
+                    </button>
+                    <button 
+                        class="absolute right-12 top-[50%] bg-zinc-800 border border-zinc-950
+                            rounded py-1 px-2 text-2xl not:disabled:hover:bg-zinc-700 transition-all
+                            disabled:opacity-50"
+                        x-bind:disabled="idx === img_len - 1"
+                        x-on:click="idx += 1"
+                    >
+                        &rarr;
+                    </button>
                     <img
                         class="inline-block shadow-sm dark:shadow-black rounded"
-                        src="/img/projects/thp/01.png"
+                        x-bind:src="img[idx]"
                         alt="Project image"
                     />
                 </div>
