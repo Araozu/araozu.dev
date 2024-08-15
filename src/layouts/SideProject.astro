@@ -40,7 +40,7 @@ const images_str = JSON.stringify(images);
             <div class="grid grid-cols-[30rem_auto] gap-2">
                 <div class="flex items-center justify-center gap-4 flex-col">
                     <div
-                        class="bg-c-bg-2 rounded p-4 shadow shadow-zinc-500 dark:shadow-black"
+                        class="bg-c-bg-2 rounded p-4 shadow shadow-zinc-500 dark:shadow-black w-full"
                     >
                         <h1
                             class="font-display font-semibold text-xl text-center"
@@ -100,16 +100,16 @@ const images_str = JSON.stringify(images);
                     <button 
                         class="absolute left-12 top-[50%] bg-zinc-800 border border-zinc-950
                             rounded py-1 px-2 text-2xl not:disabled:hover:bg-zinc-700 transition-all
-                            disabled:opacity-50"
+                            disabled:opacity-25"
                         x-bind:disabled="idx === 0"
                         x-on:click="idx -= 1"
                     >
                         &larr;
                     </button>
                     <button 
-                        class="absolute right-12 top-[50%] bg-zinc-800 border border-zinc-950
+                        class="absolute right-12 top-[50%] bg-zinc-800 border border-zinc-950 text-white
                             rounded py-1 px-2 text-2xl not:disabled:hover:bg-zinc-700 transition-all
-                            disabled:opacity-50"
+                            disabled:opacity-25"
                         x-bind:disabled="idx === img_len - 1"
                         x-on:click="idx += 1"
                     >

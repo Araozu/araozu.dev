@@ -3,16 +3,20 @@ import SideProject from "../../layouts/SideProject.astro";
 ---
 
 <SideProject
-    project_title="Typed Hyperscript Processor (webpage)"
-    git_url="https://git.araozu.dev/fernando/thp-web"
-    page_url="https://thp.araozu.dev"
+    project_title="THP compiler"
+    git_url="https://git.araozu.dev/fernando/thp"
     previous="#"
-    images_folder="thp"
+    next="horarios"
+    images_folder="thpc"
 >
-    This is a static webpage that contains documentation for my other project,
-    the THP compiler.
+    The compiler for the THP Programming Language.
     <br />
     <br />
-    It is written with Astro and Markdown, highlights the syntax in the code snippets
-    using said compiler, and has some interactive code snippets.
+    Written in Rust, features a hand written lexer,
+    top-down parser, type checker, IR generator
+    and code generator.
+    <br>
+    <br>
+    In the future it will also perform code formatting,
+    provide an LSP and package managing.
 </SideProject>
