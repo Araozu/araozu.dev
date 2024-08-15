@@ -2,6 +2,8 @@
 import GithubIcon from "../components/Sideprojects/GithubIcon.astro";
 import GlobeIcon from "../components/Sideprojects/GlobeIcon.astro";
 import NavigationLayout from "./NavigationLayout.astro";
+
+const { project_title, git_url, page_url, previous, next } = Astro.props;
 ---
 
 <!doctype html>
@@ -30,32 +32,58 @@ import NavigationLayout from "./NavigationLayout.astro";
     <body>
         <NavigationLayout>
             <div class="grid grid-cols-[30rem_auto] gap-2">
-                <div class="flex items-center">
+                <div class="flex items-center justify-center gap-4 flex-col">
                     <div
-                        class="bg-c-bg-2 my-4 rounded p-4 dark:shadow-black shadow"
+                        class="bg-c-bg-2 rounded p-4 shadow shadow-zinc-500 dark:shadow-black"
                     >
                         <h1
                             class="font-display font-semibold text-xl text-center"
                         >
-                            Typed Hyperscript Processor (webpage)
+                            {project_title}
                         </h1>
 
                         <p class="pt-8">
-                            Descripción del proyecto :D (carita feliz) en 240
-                            palabras o menos
+                            <slot />
                         </p>
 
                         <div class="pt-8">
                             <GithubIcon color="var(--c-on-bg)" />
-                            <a href="" class="underline">Source code</a>
+                            <a href={git_url} class="underline">Source code</a>
                             <br />
-                            <GlobeIcon color="var(--c-on-bg)" />
-                            <a href="" class="underline"
-                                >https://webpage.araozu.dev/</a
-                            >
+                            {
+                                page_url && (
+                                    <>
+                                        <GlobeIcon color="var(--c-on-bg)" />
+                                        <a href={page_url} class="underline">
+                                            Webpage
+                                        </a>
+                                    </>
+                                )
+                            }
                         </div>
 
+                        <!--
                         <div class="pt-8">logos</div>
+                        -->
+                    </div>
+
+                    <div class="grid grid-cols-2 w-full gap-6">
+                        <a
+                            class={`inline-block w-full bg-c-bg-2 rounded p-4 shadow shadow-zinc-500
+                                 dark:shadow-black transition-colors 
+                                ${previous? "hover:bg-zinc-300": "opacity-50 cursor-default"}`}
+                            href={previous? `/side-projects/${previous}` : `#`}
+                        >
+                            &larr; <span class="underline">Previous project</span>
+                        </a>
+                        <a
+                            class={`inline-block w-full bg-c-bg-2 rounded p-4 shadow shadow-zinc-500
+                                 dark:shadow-black transition-colors 
+                                ${next? "hover:bg-zinc-300": "opacity-50 cursor-default"}`}
+                            href={next? `/side-projects/${next}` : `#`}
+                        >
+                            <span class="underline">Next project</span> &rarr;
+                        </a>
                     </div>
                 </div>
 
