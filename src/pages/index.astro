@@ -3,8 +3,10 @@ import Sidebar from "../components/Sidebar.astro";
 import Languages from "../components/index/Languages.astro";
 import Learning from "../components/index/Learning.astro";
 import Tools from "../components/index/Tools.astro";
+import NavigationLayout from "../layouts/NavigationLayout.astro";
 ---
-<!DOCTYPE html>
+
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
@@ -21,15 +23,17 @@ import Tools from "../components/index/Tools.astro";
         <script src="//unpkg.com/alpinejs" defer></script>
     </head>
     <body>
-        <div
-            class="container mx-auto p-2 lg:grid lg:grid-cols-[20rem_auto] lg:gap-4"
-        >
-            <Sidebar />
-            <div>
-                <Languages />
-                <Learning />
-                <Tools />
+        <NavigationLayout>
+            <div
+                class="container mx-auto p-2 lg:grid lg:grid-cols-[20rem_auto] lg:gap-4"
+            >
+                <Sidebar />
+                <div>
+                    <Languages />
+                    <Learning />
+                    <Tools />
+                </div>
             </div>
-        </div>
+        </NavigationLayout>
     </body>
 </html>

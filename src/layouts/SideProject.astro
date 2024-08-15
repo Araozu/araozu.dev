@@ -1,6 +1,7 @@
 ---
 import GithubIcon from "../components/Sideprojects/GithubIcon.astro";
 import GlobeIcon from "../components/Sideprojects/GlobeIcon.astro";
+import NavigationLayout from "./NavigationLayout.astro";
 ---
 
 <!doctype html>
@@ -25,73 +26,42 @@ import GlobeIcon from "../components/Sideprojects/GlobeIcon.astro";
             href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
         />
         <script src="//unpkg.com/alpinejs" is:inline defer></script>
-
-        <style>
-            html {
-                font-size: 18px;
-            }
-        </style>
     </head>
     <body>
-        <div class="grid grid-cols-[4rem_auto]">
-            <div class="h-screen">
-                <nav
-                    class="fixed top-0 left-0 bg-black text-white rotate-[-90deg] font-display w-[100vh] translate-y-[100vh] px-8 py-2"
-                    style="transform-origin: 0% 0%;"
-                >
-                    <a
-                        class="font-semibold inline-block text-2xl hover:underline"
-                        href="/"
-                    >
-                        Fernando Araoz
-                    </a>
-                    <a
-                        class="ml-6 inline-block underline"
-                        href="/side-projects"
-                    >
-                        Side projects
-                    </a>
-                    <a
-                        class="ml-6 inline-block hover:underline"
-                        href="/blog/en"
-                    >
-                        Eng Blog
-                    </a>
-                    <a
-                        class="ml-6 inline-block hover:underline"
-                        href="/blog/es"
-                    >
-                        Es Blog
-                    </a>
-                </nav>
-            </div>
+        <NavigationLayout>
             <div class="grid grid-cols-[30rem_auto] gap-2">
                 <div class="flex items-center">
-                    <div class="bg-c-bg-2 my-4 rounded p-4 dark:shadow-black shadow">
-                        <h1 class="font-display font-semibold text-xl text-center">
+                    <div
+                        class="bg-c-bg-2 my-4 rounded p-4 dark:shadow-black shadow"
+                    >
+                        <h1
+                            class="font-display font-semibold text-xl text-center"
+                        >
                             Typed Hyperscript Processor (webpage)
                         </h1>
 
                         <p class="pt-8">
-                            Descripción del proyecto :D (carita feliz)
-                            en 240 palabras o menos
+                            Descripción del proyecto :D (carita feliz) en 240
+                            palabras o menos
                         </p>
 
                         <div class="pt-8">
                             <GithubIcon color="var(--c-on-bg)" />
                             <a href="" class="underline">Source code</a>
-                            <br>
+                            <br />
                             <GlobeIcon color="var(--c-on-bg)" />
-                            <a href="" class="underline">https://webpage.araozu.dev/</a>
+                            <a href="" class="underline"
+                                >https://webpage.araozu.dev/</a
+                            >
                         </div>
 
-                        <div class="pt-8">
-                            logos
-                        </div>
+                        <div class="pt-8">logos</div>
                     </div>
                 </div>
 
-                <div class="w-full h-screen flex items-center justify-center p-16">
+                <div
+                    class="w-full h-screen flex items-center justify-center p-16"
+                >
                     <img
                         class="inline-block shadow-sm dark:shadow-black rounded"
                         src="/img/projects/thp/01.png"
@@ -99,7 +69,6 @@ import GlobeIcon from "../components/Sideprojects/GlobeIcon.astro";
                     />
                 </div>
             </div>
-        </div>
+        </NavigationLayout>
     </body>
 </html>
-

@@ -1,4 +1,6 @@
 ---
+import NavigationLayout from "./NavigationLayout.astro";
+
 let { frontmatter, lang } = Astro.props;
 lang = lang ?? "en";
 ---
@@ -25,39 +27,10 @@ lang = lang ?? "en";
             href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css"
         />
         <script src="//unpkg.com/alpinejs" is:inline defer></script>
-
-        <style>
-            html {
-                font-size: 18px;
-            }
-        </style>
     </head>
     <body>
-        <div class="grid grid-cols-[4rem_auto]">
-            <div class="h-screen">
-                <nav
-                    class="fixed top-0 left-0 bg-black text-white rotate-[-90deg] font-display w-[100vh] translate-y-[100vh] px-8 py-2"
-                    style="transform-origin: 0% 0%;"
-                >
-                    <a
-                        class="font-semibold inline-block text-2xl hover:underline"
-                        href="/"
-                    >
-                        Fernando Araoz
-                    </a>
-                    <a
-                        class="ml-6 inline-block hover:underline"
-                        href="/side-projects">Side projects</a
-                    >
-                    <a class="ml-6 inline-block hover:underline" href="/blog/en"
-                        >Eng Blog</a
-                    >
-                    <a class="ml-6 inline-block hover:underline" href="/blog/es"
-                        >Es Blog</a
-                    >
-                </nav>
-            </div>
-            <div id="blog" class="container mx-auto max-w-[1000px]">
+        <NavigationLayout>
+            <div id="blog" class="container mx-auto max-w-[1000px]" style="font-size: 18px">
                 <div class="py-6">
                     {
                         frontmatter?.title && (
@@ -97,6 +70,6 @@ lang = lang ?? "en";
 
                 <div class="min-h-40"></div>
             </div>
-        </div>
+        </NavigationLayout>
     </body>
 </html>
