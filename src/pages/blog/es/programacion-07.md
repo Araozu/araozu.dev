@@ -174,6 +174,51 @@ const edad = "32";
 const helado_favorito = "Vainilla";
 ```
 
+## Error de duplicado
+
+Otro dato importante es que solo se puede crear
+una variable con un nombre una vez. Por ejemplo:
+
+![Codigo](/img/blog/es/tutorial/1x/006.jpg)
+
+En el código de arriba hay un error. Cuando aparecen
+lineas punteadas rojas significa que hay un error.
+
+Si colocas tu mouse encima de la palabra subrayada
+aparecerá un mensaje:
+
+![Codigo](/img/blog/es/tutorial/1x/007.jpg)
+
+El error es `redeclaration of local constant 'nombre'`.
+Significa "redeclaración de constante local 'nombre'".
+
+Hay algunas palabras raras, pero quiere decir que
+estas volviendo a crear una variable con un nombre
+ya ocupado.
+
+Para solucionar el error, cambia el nombre de la variable.
+
+
+## Error con variables no utilizadas
+
+Si creas variables, y no las utilizas despues,
+tendrás este error:
+
+![Codigo](/img/blog/es/tutorial/1x/008.jpg)
+
+`unused local constant`: "constante local inutilizada".
+
+Zig no nos permite crear una variable y dejarla olvidada.
+Si creamos una variable, la tenemos que usar.
+
+Para solucionar el error, imprime la variable,
+o elimínala, si no la vas a utilizar aún.
+
+
+## Próximamente
+
+En el siguiente artículo aprenderemos los conceptos:
+comentarios, números y operaciones matemáticas.
 
 
 
