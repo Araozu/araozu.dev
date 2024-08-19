@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayoutEs.astro
 title: "02: Programación desde cero absoluto con Zig: Fundamentos"
 description: |
     Fundamentos de la computación, programas, componentes

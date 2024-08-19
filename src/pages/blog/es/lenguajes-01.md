@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayoutEs.astro
 title: "¿Con qué lenguaje de programación se crean los lenguajes de programación?"
 description: |
     Vista superior de cómo funciona un lenguaje de programación

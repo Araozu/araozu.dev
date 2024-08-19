@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayoutEs.astro
 title: "04: Programación desde cero: Modificando el hola mundo"
 description: |
     Impresión, strings/cadenas y stdout.

@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayoutEs.astro
 title: "03: Programación desde cero: Hola mundo"
 description: |
     Escribí el tradicional programa "Hola mundo" por tí mismo!

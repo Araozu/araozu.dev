@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayoutEs.astro
 title: "05: Cero a Zig: Instalando VSCode y Zig"
 description: |
     Instalamos Zig y VSCode en nuestro computador

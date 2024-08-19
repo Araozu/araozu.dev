@@ -1,8 +1,8 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
-title: "07: Cero a Zig - Variables"
+layout: ../../../layouts/BlogLayoutEs.astro
+title: "07: Cero a Zig - Impresión con formatos"
 description: |
-    Introducción a las variables
+    Imprimiendo información adicional.
 pubDate: "2024-08-10"
 tags: ["tech", "lenguajes", "intro", "tutorial", "zig", "VSCode"]
 image: 
@@ -11,214 +11,76 @@ image:
     caption: ""
 ---
 
-Ahora veremos un concepto fundamental: Variables.
+En este artículo aprenderemos más acerca de la impresión,
+especialmente un aspecto importante para futúros artículos:
+formatos.
 
-Todo el código lo escribiremos en el proyecto que creamos
-en el artículo anterior.
+## Formato de impresión
 
-
-## Motivación
-
-Vamos a plantear un escenario: Queremos escribir un programa
-que salude a una persona, le diga cuanto cuesta su orden,
-y se despida.
-
-Digamos que la persona se llama `Juan`. El código es así:
+El código para imprimir texto tiene dos partes:
 
 ```zig
-const std = @import("std");
-
-pub fn main() !void {
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Tu pedido cuesta {s} dolares\n", .{"20"});
-    std.debug.print("Adios {s}\n", .{"Juan"});
-}
+//              --- 1 ---  -2-
+std.debug.print("formato", .{});
 ```
 
-Y al ejecutarlo se muestra:
+- 1: un formato (string)
+- 2: datos adicionales
 
-![Codigo](/img/blog/es/tutorial/1x/001.jpg)
+Hasta ahora utilizamos el primer string (1) para imprimir
+nuestro texto. Pero en (1) podemos poner unas secuencias
+especiales, que permiten colocar información adicional.
+Esta información adicional se coloca en (2).
 
-Como el código es sencillo, no hay ningún problema.
-¿Pero qué pasaría si tuvieramos que imprimir el nombre 10 veces?
-Entonces tendríamos que repetirlo 10 veces.
+Por ejemplo, podemos colocar `{s}` para imprimir un
+texto adicional:
+
+![Codigo](/img/blog/es/tutorial/1x/011.png)
+
+En este caso, `{s}` será reemplazado por `Hola`, e
+imprimirá `Hola`.
+
+Otro ejemplo:
+
+![Codigo](/img/blog/es/tutorial/1x/012.jpg)
+
+Aquí también, `{s}` será reemplazado por `Sara`.
+Al ejecutar obtendremos `Mi nombre es Sara, y el tuyo?`
+
+Podemos colocar más de un formato:
+
+![Codigo](/img/blog/es/tutorial/1x/013.jpg)
+
+En este caso la información adicional se reemplaza en orden,
+e imprime `Soy Raul y ella es Rosa`.
+
+Cuando se colocan datos adicionales, se separan con comas:
 
 ```zig
-const std = @import("std");
-
-pub fn main() !void {
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Hola {s}\n", .{"Juan"});
-    std.debug.print("Hola {s}\n", .{"Juan"});
-}
+    .{"Raul", "Rosa"}
+    //      |
 ```
 
-![Codigo](/img/blog/es/tutorial/1x/002.jpg)
-
-Un poco tedioso, pero nada imposible.
-
-Ahora vamos a cambiar el programa: el nombre de la
-persona será `Maria`.
-
-Lo que tenemos que hacer es cambiar `Juan` por
-`Maria` en los 10 lugares, uno por uno.
-
-Esto es bastante común, y existe una solución para
-no cambiar 10 veces, sino solamente una.
-
-
-## Variables
-
-Una variable es como un almacén. Una variable
-almacena un valor bajo un nombre.
-
-Por ejemplo, podemos decir que `nombre = "Juan"`,
-y a partir de ese momento cada vez que usemos
-`nombre` se reemplazará por `Juan`.
-
-Por ejemplo:
+En el siguiente artículo veremos un concepto
+llamado variables. Por ahora, solo necesitas
+saber que se pueden utilizar.
 
 ```zig
-const std = @import("std");
+const std = @import("zig");
 
 pub fn main() !void {
     const nombre = "Juan";
-    std.debug.print("Hola {s}\n", .{nombre});
+    const apellido = "Perez";
+    std.debug.print("{s} {s}", .{nombre, apellido});
+    // Imprime: `Juan Perez`
 }
 ```
 
-En el código de arriba en la linea 4, hemos creado una
-variable `nombre`, y le hemos dado como valor `"Juan"`.
 
-Despues, en la linea 5 estamos utilizando la variable.
-En vez de escribir `.{"Juan"}` escribimos `.{nombre}`.
+## Otros formatos
 
-Al ejecutar el programa se imprimirá `Hola Juan`
-
-![Codigo](/img/blog/es/tutorial/1x/003.jpg)
-
-Podemos utilizar la variable las veces que queramos.
-Si imprimimos 10 veces se vería así:
-
-```zig
-const std = @import("std");
-
-pub fn main() !void {
-    const nombre = "Juan";
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-}
-```
-
-Y al ejecutar se imprime 10 veces.
-
-![Codigo](/img/blog/es/tutorial/1x/004.jpg)
-
-Ahora, si queremos cambiar `Juan` por `Maria`,
-solo tenemos que hacerlo en un lugar:
-
-```zig
-const std = @import("std");
-
-pub fn main() !void {
-    const nombre = "Maria";
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-    std.debug.print("Hola {s}\n", .{nombre});
-}
-```
-![Codigo](/img/blog/es/tutorial/1x/005.jpg)
-
-
-## Creando una variable
-
-Para crear una variable se escribe:
-
-- `const`
-- El nombre de la variable
-- `=`
-- El valor de la variable
-- `;`
-
-El nombre de la variable solo puede tener letras,
-números y guiones bajos. No puede tener espacios.
-
-Puedes crear varias variables, cada una en una
-línea. Por ejemplo:
-
-```zig
-const nombre = "Pedro";
-const edad = "32";
-const helado_favorito = "Vainilla";
-```
-
-## Error de duplicado
-
-Otro dato importante es que solo se puede crear
-una variable con un nombre una vez. Por ejemplo:
-
-![Codigo](/img/blog/es/tutorial/1x/006.jpg)
-
-En el código de arriba hay un error. Cuando aparecen
-lineas punteadas rojas significa que hay un error.
-
-Si colocas tu mouse encima de la palabra subrayada
-aparecerá un mensaje:
-
-![Codigo](/img/blog/es/tutorial/1x/007.jpg)
-
-El error es `redeclaration of local constant 'nombre'`.
-Significa "redeclaración de constante local 'nombre'".
-
-Hay algunas palabras raras, pero quiere decir que
-estas volviendo a crear una variable con un nombre
-ya ocupado.
-
-Para solucionar el error, cambia el nombre de la variable.
-
-
-## Error con variables no utilizadas
-
-Si creas variables, y no las utilizas despues,
-tendrás este error:
-
-![Codigo](/img/blog/es/tutorial/1x/008.jpg)
-
-`unused local constant`: "constante local inutilizada".
-
-Zig no nos permite crear una variable y dejarla olvidada.
-Si creamos una variable, la tenemos que usar.
-
-Para solucionar el error, imprime la variable,
-o elimínala, si no la vas a utilizar aún.
-
-
-## Próximamente
-
-En el siguiente artículo aprenderemos los conceptos:
-comentarios, números y operaciones matemáticas.
+Hemos visto el formato `{s}`, pero existen muchos más,
+que aprenderemos a medida que los necesitemos.
 
 
 

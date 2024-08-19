@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayoutEs.astro
 title: "01: Programación desde cero absoluto con Zig"
 description: |
     Aprendé a programar desde completamente cero, utilizando el lenguaje

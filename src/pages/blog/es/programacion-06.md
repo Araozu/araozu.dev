@@ -1,5 +1,5 @@
 ---
-layout: ../../../layouts/BlogLayout.astro
+layout: ../../../layouts/BlogLayoutEs.astro
 title: "06: Cero a Zig: Terminal y Proyecto Zig"
 description: |
     Veremos el terminal y cómo crear/ejecutar un proyecto de Zig

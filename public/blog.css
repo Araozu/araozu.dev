@@ -85,3 +85,12 @@ pre.astro-code>code .line::before {
         text-decoration: var(--shiki-dark-text-decoration) !important;
     }
 }
+
+/* isso */
+#isso-thread textarea {
+    color: black;
+}
+
+#isso-thread input {
+    color: black;
+}
