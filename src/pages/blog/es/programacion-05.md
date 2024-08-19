@@ -1,174 +1,141 @@
 ---
 layout: ../../../layouts/BlogLayoutEs.astro
-title: "05: Cero a Zig: Instalando VSCode y Zig"
+title: "Cero a Zig 05: Hola mundo"
 description: |
-    Instalamos Zig y VSCode en nuestro computador
-pubDate: "2024-08-08"
-tags: ["tech", "lenguajes", "intro", "tutorial", "zig", "VSCode"]
+    Escribimos nuestro primer programa: Hola mundo!
+pubDate: "2024-07-19"
+tags: ["tech", "lenguajes", "intro", "tutorial", "zig"]
 image: 
     url: ""
     alt: ""
     caption: ""
 ---
 
-En este artículo vamos a instalar 2 cosas en nuestro computador:
-[Zig](https://ziglang.org/) y 
-[Visual Studio Code](https://code.visualstudio.com/).
 
-En los artículos anteriores habíamos escrito nuestro código en
-una página web. Sin embargo, lo mejor es escribir el código
-(programar) y ejecutarlo en nuestro computador.
+En este artículo vamos a escribir nuestro primer programa: Hola mundo. Vamos a
+modificarlo y entender algunos otros conceptos.
 
-Ya que este es un tutorial básico de programación, asumo que
-estas utilizando Windows. Yo usaré Windows 10, pero las instrucciones
-funcionan igual en Windows 11.
+## Hola mundo
 
+Hola mundo es tradicionalmente el [primer programa](https://es.wikipedia.org/wiki/Hola_mundo)
+que se escribe cuando se aprende a programar.
 
-## Descargar e instalar VSCode
+Vamos a empezar con este programa. Entra a la siguiente página web:
+[https://zig.fly.dev/p/xNluereqmgW](https://zig.fly.dev/p/xNluereqmgW)
 
-Si sabes como instalar un programa y no necesitas instrucciones
-paso a paso, saltate esta sección.
+Veras lo siguiente:
 
-Primero busca `VSCode` en Google, y entra a la primera página que
-sale.
+![Zig online 1](/img/blog/es/tutorial/007-zig1.jpg)
 
-![Resultados de google](/img/blog/es/tutorial/070-zig.jpg)
+Arriba está el nombre de la página: "Zig Playground". A su derecha hay 3 botones en inglés:
 
-Una vez en la página descarga VSCode con el boton grande y azul.
+- "Run" ejecuta el programa.
+- "Format" hace algo llamado 'formatear' el código. No lo usaremos aún.
+- "Share" comparte el código que escribimos. No lo usaremos.
 
-![Página de VSCode](/img/blog/es/tutorial/071-zig.jpg)
+Dentro del recuadro plomo está escrito el código **Zig**. No lo modifiques aún.
 
-Se abrirá una nueva ventana en la esquina superior derecha.
-Cuando termine de descargarse, ábrelo haciendole click.
+Si lo modificaste y quieres volver al código original, cierra la página y vuelve a
+abrirla con el link de arriba.
 
-![Descarga de VSCode](/img/blog/es/tutorial/072-zig.jpg)
+## Ejecutando el código
 
+Presiona el boton "Run". Aparecerá texto debajo del recuadro del código:
 
-Se abrirá una nueva ventana. Primero selecciona
-"Acepto el acuerdo" y despues presiona el boton "Siguiente".
+![Zig online 2](/img/blog/es/tutorial/008-zig.png)
 
-![Instalación de VSCode](/img/blog/es/tutorial/073-zig.jpg)
+Este texto es el resultado de ejecutar el programa. Se lee:
 
-Volveran a salir nuevas ventanas. Presiona "Siguiente" en todas.
+- `Hola mundo!` : Este es el resultado del programa.
+- `Program exited.` : Significa "El programa terminó" en ingles. Nos 
+    indica que el programa terminó de ejecutarse. Puedes ignorarlo.
 
-![Instalación](/img/blog/es/tutorial/074-zig.jpg)
+Felicidades! Has ejecutado tu primer programa.
 
-Cuando salga "Instalar" en vez de "Siguiente", presionalo.
+> Desafio: Borra todo el código y vuelve a escribirlo, exactamente igual.
+    Utiliza la imágen como guía.
 
-![Instalación](/img/blog/es/tutorial/075-zig.jpg)
 
-Finalmente, saldrá una última ventana. Presiona "Finalizar"
-y se abrirá VSCode.
+## ¿Qué significan todas estas letras?
 
-![Instalación](/img/blog/es/tutorial/076-zig.jpg)
+Como verás, hay un monton de palabras y símbolos con colorcitos.
+Este es el código, es como un lenguaje especial utilizado
+para comunicarse con el computador.
 
-También puedes abrir VSCode desde el menú de inicio de
-Windows.
+Así como el francés, árabe o coreano, el **lenguaje** de programación Zig
+tiene un conjunto de reglas. Aprenderemos las reglas a medida que avance
+el tiempo. Mientras tanto, puedes ignorar todas esas palabras.
 
-![Instalación](/img/blog/es/tutorial/044-zig.jpg)
+> ¿Que pasa si eliminas alguna de esas palabras y ejecutas el programa 
+    (con el boton "Run")? ¿Qué mensaje obtienes? ¿Qué crees que significa?
 
 
+## Magia negra y abstracción
 
-## Introducción a VSCode
+Según [Significados.com](https://www.significados.com/abstracto/),
+abstracto significa vago, impreciso, teórico, que no tiene existencia
+física (entre otras cosas). Algo abstracto suele ser algo difícil
+de entender, o imaginario.
 
-VSCode es un "IDE", un programa que trae muchas funciones
-útiles a la hora de programar. Lo vamos a utilizar a partir
-de ahora para aprender a programar en Zig.
 
-La primera vez que se abre VSCode se ve así:
+En programación, abstracto tiene otro significado. Puedes buscar su
+definición técnica en internet, pero me parece muy confusa para
+un principiante, así que lo explicare en mis términos.
 
-![VSCode](/img/blog/es/tutorial/045-zig.jpg)
+En programación, abstracto significa que sabemos **qué** hace, pero
+no **cómo** lo hace. Un ejemplo claro sería un auto. Sabemos que
+al pisar el acelerador, el auto avanza. Pero no sabemos **cómo**
+pisar el acelerador ocasiona que el combustible se transforme en
+energía cinemática.
 
-Hay un monton de botones y divisiones. No te preocupes en
-entenderlo todo ahora mismo.
+Por ejemplo, voy a hablar más adelante de "imprimir" en el programa.
+Imprimir significa mostrar un mensaje en la pantalla. Sin embargo,
+no te voy a explicar cómo funciona la impresión. El concepto de
+"imprimir" es abstracto.
 
-Notarás que el programa está en inglés. Ahora te mostraré
-cómo ponerlo en español.
+### Magia negra
 
-### Cambiar idioma a español
+Escuché este termino del canal de Youtube Imesi.net. Magia negra
+es algo que: no se qué hace, cómo funciona, ni tampoco me importa.
 
-A la izquierda arriba hay una serie de botones. Presiona el último,
-que tiene unos cuadros.
+Voy a utilizar el término "magia negra" para referirme a algo
+por lo que no necesitas preocuparte, o intentar entender. Por
+ejemplo, en el código de más arriba:
 
-![Ext](/img/blog/es/tutorial/046-zig.jpg)
+![Zig online 1](/img/blog/es/tutorial/007-zig1.jpg)
 
-Esto abre una pestaña donde podemos buscar "Extensiones".
-Las extensiones agregan características a VSCode.
+Todo el texto que dice:
 
-Primero vamos a instalar el idioma español. En la barra de búsqueda
-escribe "español":
+```zig
+const std = @import("std")
 
-![Ext](/img/blog/es/tutorial/047-zig.jpg)
+pub fn main() {
+    std.debug.print();
+}
+```
 
-Y presiona el botón azul "Install" del primer item de la lista
-que dice "Spanish":
+es magia negra. Funciona, hace algo, pero no importa. No te
+preocupes en intentar entenderlo.
 
-![Ext](/img/blog/es/tutorial/048-zig.jpg)
+Eventualmente, y a medida que aprendas conceptos nuevos,
+entenderas qué significan esas cosas.
 
-Luego de eso, abajo a la derecha saldrá un mensaje.
-Presiona el botón azul:
 
-![Ext](/img/blog/es/tutorial/049-zig.jpg)
+## Inglés
 
-El programa se reiniciará, y ahora estará en español.
+Como habras visto, prácticamente todo el código está en inglés.
+Si ya sabes ingles, o lo estas aprendiendo, no tendrás muchos
+problemas continuando.
 
-Ahora vamos a instalar la extensión de Zig.
+En mi opinion, programar sin saber inglés es contraproducente.
+Los lenguajes de programación (en su mayoría) se escriben en
+inglés, las mnemotécnicas están en inglés, y mucha información
+útil e importante está en inglés. Programar sin saber inglés
+es sumamente difícil.
 
+Seguramente aprenderás algunas palabras a lo largo del tutorial,
+pero lo mejor que podrías hacer es aprender inglés.
 
-### Instalar la extensión de Zig
 
-Regresa a la pestaña de extensiones:
 
-![Ext](/img/blog/es/tutorial/046-zig.jpg)
-
-Y busca "Zig". Instala la extensión que se llama
-"Zig Language" y dice "ziglang":
-
-![Ext](/img/blog/es/tutorial/050-zig.jpg)
-
-Cuando se haya instalado puedes cerrar la pestaña:
-
-![Ext](/img/blog/es/tutorial/051-zig.jpg)
-
-Y volver al inicio:
-
-![Ext](/img/blog/es/tutorial/052-zig.jpg)
-
-## Instalar Zig
-
-Hemos instalado la extensión de Zig, ahora instalaremos algo
-llamado "Compilador".
-
-Presiona `Control + Shift + P`, se abrirá una ventana arriba
-en el centro:
-
-![Zig](/img/blog/es/tutorial/066-zig.jpg)
-
-
-En la barra de busqueda escribe `Zig`, y presiona el botón
-`Zig Setup: Install Zig`:
-
-![Zig](/img/blog/es/tutorial/067-zig.jpg)
-
-En el dialogo que sale, presiona "Install".
-
-![Zig](/img/blog/es/tutorial/064-zig.jpg)
-
-Saldrá una nueva ventana, donde hay que escoger una versión.
-Elije la versión debajo de `nightly`. Al momento de escribir
-esto es `0.13.0`.
-
-![Zig](/img/blog/es/tutorial/068-zig.jpg)
-
-Saldrá una nueva ventana, presiona "Install".
-
-![Zig](/img/blog/es/tutorial/065-zig.jpg)
-
-Y selecciona la misma versión de antes. En mi caso, `0.13.0`.
-
-![Zig](/img/blog/es/tutorial/068-zig.jpg)
-
-
-Con eso terminamos. Hemos instalado Zig en nuestro computador.
-En el siguiente artículo utilizaremos estas herramientas.
 

@@ -1,6 +1,6 @@
 ---
 layout: ../../../layouts/BlogLayoutEs.astro
-title: "07: Cero a Zig - Impresión con formatos"
+title: "Cero a Zig 07: Impresión con formatos"
 description: |
     Imprimiendo información adicional.
 pubDate: "2024-08-10"

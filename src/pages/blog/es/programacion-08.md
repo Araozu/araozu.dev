@@ -1,6 +1,6 @@
 ---
 layout: ../../../layouts/BlogLayoutEs.astro
-title: "08: Cero a Zig - Variables"
+title: "Cero a Zig 08: Variables"
 description: |
     Introducción a las variables
 pubDate: "2024-08-11"

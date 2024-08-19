@@ -4,7 +4,7 @@ title: "¿Con qué lenguaje de programación se crean los lenguajes de programac
 description: |
     Vista superior de cómo funciona un lenguaje de programación
     realmente.
-pubDate: "2024-07-25"
+pubDate: "2024-07-14"
 tags: ["tech", "lenguajes", "tutorial"]
 image: 
     url: "/img/blog/es/lang/cover.png"

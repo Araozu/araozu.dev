@@ -1,209 +1,171 @@
 ---
 layout: ../../../layouts/BlogLayoutEs.astro
-title: "06: Cero a Zig: Terminal y Proyecto Zig"
+title: "Cero a Zig 06: Modificando el hola mundo"
 description: |
-    Veremos el terminal y cómo crear/ejecutar un proyecto de Zig
-pubDate: "2024-08-09"
-tags: ["tech", "lenguajes", "intro", "tutorial", "zig", "VSCode"]
+    Impresión, strings/cadenas y stdout.
+pubDate: "2024-07-30"
+tags: ["tech", "lenguajes", "intro", "tutorial", "zig"]
 image: 
-    url: "/vid/hacker.webp"
+    url: ""
     alt: ""
     caption: ""
 ---
 
-Seguramente has visto imágenes/videos de hackers antes,
-escribiendo en una pantalla negra con letras verdes.
-Ahora tu también, podras escribir en una pantalla negra
-(pero sin letras verdes).
+En el artículo anterior escribimos nuestro primer programa:
+Hola mundo. En este artículos vamos a modificar el mensaje
+y aprender el primer concepto: Strings
 
-En este artículo veremos el terminal, crearemos un proyecto
-de Zig en nuestro computador, y lo ejecutaremos.
 
-En el artículo anterior ya instalamos VSCode y Zig, así que a partir
-de ahora me referiré a ellos.
+## Modificando "Hola mundo"
 
+Entra a la página web
+[https://zig.fly.dev/p/xNluereqmgW](https://zig.fly.dev/p/xNluereqmgW),
+donde se encuentra el programa "Hola mundo". Esta vez vamos a modificar
+el mensaje.
 
-## El terminal
+El resto de las palabras son magia negra. Te habras dado cuenta que
+hay palabras en español: Hola y mundo.
 
-[El/la terminal](https://en.wikipedia.org/wiki/Command-line_interface)
-es una forma de interactuar con nuestro computador, y se utiliza
-muchisimo en programación.
+![Zig online](/img/blog/es/tutorial/009-zig.jpg)
 
-En el terminal escribimos comandos, el computador los ejecuta,
-y nos responde. En cierto modo es como una versión mini de la
-programación.
+Hay varias cosas que notar:
 
-Dentro de VSCode, en los menus de arriba a la izquierda, selecciona
-los 3 puntos, `Terminal`, `Nuevo Terminal`:
+- Estan pintadas de color amarillo
+- Tienen comillas dobles `"` al inicio y al final
 
-![Terminal](/img/blog/es/tutorial/053-zig.jpg)
+Dentro de estas comillas `"` podemos escribir el texto que querramos.
 
-Aparecerá una nueva ventana en blanco abajo:
+Por ejemplo, si reemplazas `Hola` por `Adios` y ejecutas el programa,
+se imprimirá `Adios mundo!`
 
-![Terminal](/img/blog/es/tutorial/054-zig.jpg)
+![Zig online](/img/blog/es/tutorial/010-zig.jpg)
 
-Este es nuestro terminal. Aquí escribiremos algunos comandos
-para crear un "proyecto" y "ejecutarlo".
+![Zig online](/img/blog/es/tutorial/011-zig.jpg)
 
+Y también, si reemplazas `mundo` por otra palabra, se imprimirá
+lo que escribiste.
 
-## Creando un proyecto de Zig
+Tambien puedes agregar otro texto en ambos lados. Por ejemplo:
 
-Un proyecto es una carpeta con una serie de archivos,
-en los cuales programaremos nuestro programa.
+![Zig online](/img/blog/es/tutorial/012-zig.jpg)
 
-Haz click en en el terminal y escribe `mkdir tutorial`
 
-![Terminal](/img/blog/es/tutorial/055-zig.jpg)
+## Strings / cadenas de caracteres
 
-`mkdir` es el "comando" que ejecutará la computadora,
-y `tutorial` es un "argumento" que recibe el comando.
+Los strings (cadenas de caracteres en inglés) son la forma
+en la que almacenamos texto.
 
-`mkdir` viene del inglés "make directory", y crea una
-carpeta nueva. En este caso estamos creando una carpeta
-llamada `tutorial`.
+Un string empieza con una comilla doble `"`, el contenido
+del string, y termina con una comilla doble `"`.
 
-Presiona enter para ejecutar el comando.
+Unos ejemplos de strings son: `"hola"`, `"adios"`,
+`"multiples palabras"`, `"123456"`.
 
-![Terminal](/img/blog/es/tutorial/056-zig.jpg)
+En el programa de arriba hay 2 strings:
 
-En el terminal veremos siempre:
+![Zig online](/img/blog/es/tutorial/013-zig.jpg)
 
-1. (1) La carpeta en donde estamos
-2. (2) El comando que escribimos
+Estos strings son lo que se muestra en pantalla al
+ejecutar el programa.
 
-Algunos comandos tienen una "respuesta". En la imágen
-de arriba la respuesta es una confirmación de la carpeta
-que creamos.
+Los strings tienen algunas características:
 
-Ahora vamos a ejecutar otro comando: `cd tutorial`
+- En el código, los strings tienen otro color para que
+    sea más fácil identificarlos.
+- No puede haber comillas dentro de un string.
+    
+    El string termina cuando aparece la primera comilla.
+    Por ejemplo:
 
-![Terminal](/img/blog/es/tutorial/057-zig.jpg)
+    ![Zig online](/img/blog/es/tutorial/014-zig.jpg)
 
-`cd` es una abreviación de "change directory", que
-significa cambiar de carpeta. Usando este comando cambiamos
-la carpeta en la que estamos.
+    Aquí el string termina despues del `Hola `, la palabra
+    `familia` no es parte del string. Puedes ver que el
+    color amarillo del string termina en la segunda comilla,
+    y la palabra familia está de color blanco.
 
-Ahora vamos a crear el proyecto de Zig, con el comando
-`zig init`:
+- No puede haber nuevas lineas en un string. Esto es un error:
 
-![Terminal](/img/blog/es/tutorial/058-zig.jpg)
+    ![Zig online](/img/blog/es/tutorial/015-zig.jpg)
 
-El comando `zig` nos permite realizar varias acciones,
-que veremos con el tiempo.
+    Sin embargo, hay ocasiones donde queremos tener varias lineas
+    en un string. Para esto se utilizan 2 caracteres especiales:
+    `\n`. Estos nos permiten "señalar" que ahí va una linea nueva.
 
-Al ejecutar `zig init` creamos un proyecto nuevo en
-la carpeta actual. Esto crea una serie de archivos
-y carpeta, que ahora abriremos.
+    ![Zig online](/img/blog/es/tutorial/016-zig.jpg)
 
+    Estos caracteres especiales se conocen como "caracteres de escape".
+    Hay varios de ellos, pero no los veremos por ahora.
 
-## Abriendo el proyecto
 
-Dentro de VSCode, presionamos el boton "Abrir carpeta".
+## Impresión
 
-![VSCode](/img/blog/es/tutorial/059-zig.jpg)
+Imprimir es mostrar información a través de la pantalla. Esta
+información puede ser palabras, letras, números, símbolos, etc.
 
-Si no puedes ver este boton, asegurate de estar en la primera pestaña:
+Para imprimir en Zig se escribe lo siguiente:
 
-![Ext](/img/blog/es/tutorial/052-zig.jpg)
+![Zig online](/img/blog/es/tutorial/017-zig.jpg)
 
-Aquí seleccionamos la carpeta `tutorial`. Esta es la carpeta que
-acabamos de crear en el terminal.
+`std.debug.print` es una invocación que imprime lo que tenga
+dentro. Para poner algo dentro, se utilizan parentesis `()`.
 
-![VSCode](/img/blog/es/tutorial/060-zig.jpg)
+Dentro de los paréntesis va el string que queremos imprimir
+y una secuencia misteriosa, así: `("Tu mensaje", .{})`.
 
-Nos saldrá el mensaje de la imagen de abajo. Selecciona "Confiar en
-los autores..." y presiona "Si, confio en los autores".
+Y finalmente, muy importante, todas las invocaciones
+terminan con un punto y coma `;`. Si la invocación
+no termina con su punto y coma tendrás un error misterioso.
 
-![VSCode](/img/blog/es/tutorial/061-zig.jpg)
+Por ejemplo, para imprimir un nuevo texto `Me gusta Zig`
+se escribiriá el código así:
 
-Ahora veras que en vez del boton "Abrir carpeta" ahora hay una
-serie de archivos.
+`std.debug.print("Me gusta Zig", .{});`
 
-![VSCode](/img/blog/es/tutorial/062-zig.jpg)
+Podemos tener varias invocaciones a la vez, y ejecutarlas en
+siempre que la invocación esté bien escrita.
 
-Este es nuestro proyecto. Aquí es donde estarán todos los archivos
-que usaremos.
+![Zig online](/img/blog/es/tutorial/018-zig.jpg)
 
-- Carpeta `src`: Contiene el código que ejecutaremos
-- `build.zig`: Archivo mágico. Es mejor no tocarlo.
-- `build.zig.zon`: Archivo mágico. Es mejor no tocarlo.
+Y al ejecutar el programa se imprimiran los mensajes en orden.
 
-Haz click en la carpeta `src` y en el archivo `main.zig`:
+![Zig online](/img/blog/es/tutorial/019-zig.jpg)
 
-![VSCode](/img/blog/es/tutorial/063-zig.jpg)
 
-Este es el archivo donde trabajemos por el resto de la serie.
+## Nuevas lineas
 
-![VSCode](/img/blog/es/tutorial/078-zig.jpg)
+Notarás que el mensaje se imprimió junto: `Mi primera impresiónMe gusta Zig`.
 
-Veras que hay un monton de código raro, que aun no sabemos qué
-significa. Por ahora lo vamos a dejar así.
+Este es un buen momento para presentar un concepto muy importante:
+la computadora hace lo que le pides, no lo que quieres.
 
+El código que ejecutamos no le pide a la computadora que imprima
+una nueva linea `\n`. Así que la computadora no la imprime.
 
-## Ejecutando el proyecto
+Para tener una nueva linea hay que incluirla en los strings, y con
+eso al ejecutar estará cada linea separada:
 
-Ahora que instalamos Zig en nuestro computador, tenemos que ejecutar
-el programa en nuestro computador. Eso lo haremos desde el terminal.
+![Zig online](/img/blog/es/tutorial/020-zig.jpg)
 
+![Zig online](/img/blog/es/tutorial/021-zig.jpg)
 
-Ve al terminal y ejecuta `zig build run`. Veras un monton de texto
-raro, pero al final debería quedar así:
 
-![VSCode](/img/blog/es/tutorial/077-zig.jpg)
 
+## Glosario
 
-Y también notarás que aparecieron 2 carpetas nuevas: `.zig-cache`
-y `zig-out`. Ignóralas.
+No es necesario que memorices o entiendas estas palabras.
 
-Has ejecutado el proyecto! Ahora vamos a hacerlo con nuestro propio código.
-
-
-## Reemplazando el código
-
-En artículos anteriores vimos un programa llamado "Hola mundo":
-
-```zig
-const std = @import("std");
-
-pub fn main() !void {
-    std.debug.print("Hola mundo!", .{});
-}
-```
-
-Ahora vamos a ejecutarlo en nuestro computador, en vez de
-la página web.
-
-Entra a `src/main.zig` y reemplaza todo el código que está ahí
-por el código de arriba.
-
-> Nota: Puede que notes que las imágenes no sean exáctamente
-    iguales a como cuando tu escribas el código.
-    No te preocupes, no es un problema.
-
-Una vez que hayas modificado el código, verás un punto blanco arriba:
-
-![VSCode](/img/blog/es/tutorial/080-zig.jpg)
-
-Esto significa que el archivo está modificado, pero no guardado.
-Presiona `Control + S` para guardar el archivo.
-
-Ahora, ejecuta el código: Ve al terminal y ejecuta el comando
-`zig build run`:
-
-> Nota: Verás que mi terminal se ve diferente. Pero lo importante
-    son los comandos, y el resultado.
-
-![VSCode](/img/blog/es/tutorial/081-zig.jpg)
-
-El resultado sale abajo: `Hola mundo!`.
-
-
-## Siguentes pasos
-
-Ya estamos listos para seguir aprendiendo Zig.
-
-Ahora intenta ejecutar los programas que escribimos
-antes en VSCode. Copia y pega el código, o aún mejor,
-escríbelo tú mismo.
+- String: "cadena de caracteres"
+- `const`: abreviatura de "constante", que no cambia
+- `std`: abreviatura de "estandar"
+- `import`: "importar"
+- `pub`: abreviatura de "público", que es accesible
+- `fn`: abreviatura de "función". en este artículo les llamé
+    invocaciones
+- `void`: "vacio"
+- `main`: "principal"
+- `debug`: el debugging es un proceso mediante el cual
+    se eliminan errores (tambien conocidos como "bugs")
+- `print`: "imprimir"
 
 

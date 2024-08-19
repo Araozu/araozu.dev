@@ -1,6 +1,6 @@
 ---
 layout: ../../../layouts/BlogLayoutEs.astro
-title: "09: Cero a Zig - Comentarios y Números"
+title: "Cero a Zig 09: Comentarios y Números"
 description: |
     Comentarios, números y operaciones matemáticas
 pubDate: "2024-08-17"

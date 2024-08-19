@@ -1,6 +1,6 @@
 ---
 layout: ../../../layouts/BlogLayoutEs.astro
-title: "02: Programación desde cero absoluto con Zig: Fundamentos"
+title: "Cero a Zig 02: Fundamentos"
 description: |
     Fundamentos de la computación, programas, componentes
 pubDate: "2024-07-16"
