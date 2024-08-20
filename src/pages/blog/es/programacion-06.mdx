@@ -257,5 +257,23 @@ pero intenta resolverlos por ti mismo antes.
     </Fragment>
 </Exercise>
 
+<Exercise>
+    6: Escribe un programa que imprima el siguiente texto
+    (fíjate en las lineas en blanco):
+
+    <Sh code={"linea 1\n\nlinea2\n\n\nlinea3"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        std.debug.print("linea 1\n\n", .{}); // [!code focus:3]
+        std.debug.print("linea 2\n\n\n", .{});
+        std.debug.print("linea 3", .{});
+    }
+    ```
+    </Fragment>
+</Exercise>
 
 

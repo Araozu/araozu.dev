@@ -10,6 +10,8 @@ image:
     alt: ""
     caption: ""
 ---
+import Exercise from "../../../components/Blog/Exercise.astro"
+import Sh from "../../../components/Blog/Sh.astro"
 
 Ahora veremos un concepto fundamental: Variables.
 
@@ -162,8 +164,6 @@ Para crear una variable se escribe:
 - El valor de la variable
 - `;`
 
-El nombre de la variable solo puede tener letras,
-números y guiones bajos. No puede tener espacios.
 
 Puedes crear varias variables, cada una en una
 línea. Por ejemplo:
@@ -173,6 +173,37 @@ const nombre = "Pedro";
 const edad = "32";
 const helado_favorito = "Vainilla";
 ```
+
+
+## Nombre de la variable
+
+Los nombres de las variables siguen algunas reglas:
+
+- El nombre inicia con letra minúscula o guión bajo `_`
+- El nombre despues puede tener letras minúsculas, mayúsculas,
+    números o guiones bajos `_`.
+- No pueden haber espacios, guiones `-` u otros.
+
+Por ejemplo, los siguientes nombres son válidos:
+
+```zig
+_nombre
+apellido
+nombres_y_apellidos
+numeroDeVentas
+ratio_fiscal_2
+```
+
+Los siguientes nombres son inválidos:
+
+```zig
+Nombre              // inicia con N mayuscula
+3_gatos             // inicia con un número
+nombres y apellidos // tiene espacios
+apelido-paterno     // tiene un guión
+```
+
+
 
 ## Error de duplicado
 
@@ -219,6 +250,145 @@ o elimínala, si no la vas a utilizar aún.
 
 En el siguiente artículo aprenderemos los conceptos:
 comentarios, números y operaciones matemáticas.
+
+
+## Ejercicios
+
+Resuelve estos ejercicios en tu editor de texto VSCode.
+Al ejecutar debe salir en el terminal el mismo resultado
+que el del enunciado.
+
+Tu respuesta no necesita ser exáctamente la misma a la
+que está aquí, pero debería funcionar.
+
+<Exercise>
+    1: Crea una variable `nombre` con valor `"John"`,
+    y una variable `apellido` con valor `"Doe"`.
+    Imprime ambas utilizando formatos.
+
+    <Sh code={"John Doe"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        const nombre = "John"; // [!code focus:4]
+        const apellido = "Doe";
+
+        std.debug.print("{s} {s}\n", .{nombre, apellido});
+    }
+    ```
+    </Fragment>
+</Exercise>
+
+<Exercise>
+    2: Necesito un programa que imprima el siguiente mensaje:
+
+    <Sh code={"Bienvenido a ACME inc\n\nTu postulación a ACME inc ha sido aceptada.\nEn breve recibirás un correo con el código de conducta de ACME inc"} />
+
+    Mi empresa aún no tiene un nombre fijo, así que necesito
+    poder cambiar `ACME inc` fácilmente después.
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        const empresa = "ACME inc"; // [!code focus:5]
+
+        std.debug.print("Bienvenido a {s}\n\n", .{empresa});
+        std.debug.print("Tu postulación a {s} ha sido aceptada.\n", .{empresa});
+        std.debug.print("En breve recibirás un correo con el código de conducta de {s}\n", .{empresa});
+    }
+    ```
+    </Fragment>
+</Exercise>
+
+<Exercise>
+    3: También necesito un programa que imprima una lista de invitados:
+
+    <Sh code={"Lista de invitados:\n\n"
+        + "Área A de ACME inc: Rosa\n"
+        + "Área A de ACME inc: María\n"
+        + "Área A de ACME inc: Andrea\n"
+        + "Área B de ACME inc: Rodrigo\n"
+        + "Área B de ACME inc: Pedro\n"
+        + "Área C de ACME inc: Raul\n"
+        + "Área C de ACME inc: Ana\n"
+    } />
+
+    Como puedes ver, aun está el nombre provisional `ACME inc`.
+    Pero también hay nombres provisionales de las áreas de la
+    empresa: `Área A`, `Área B` y `Área C`. Estos nombres
+    eventualmente cambiarán, asi que necesito poder cambiarlos
+    después en un único lugar. Los nombres de las personas
+    no cambiarán.
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        const empresa = "ACME inc"; // [!code focus:13]
+        const area_1 = "Área A";
+        const area_2 = "Área B";
+        const area_3 = "Área C";
+
+        std.debug.print("Lista de invitados:\n\n", .{});
+        std.debug.print("{} de {}: Rosa\n", .{area_1, empresa});
+        std.debug.print("{} de {}: María\n", .{area_1, empresa});
+        std.debug.print("{} de {}: Andrea\n", .{area_1, empresa});
+        std.debug.print("{} de {}: Rodrigo\n", .{area_2, empresa});
+        std.debug.print("{} de {}: Pedro\n", .{area_2, empresa});
+        std.debug.print("{} de {}: Raul\n", .{area_3, empresa});
+        std.debug.print("{} de {}: Ana\n", .{area_3, empresa});
+    }
+    ```
+    </Fragment>
+</Exercise>
+
+<Exercise>
+    4: Mis socios y yo nos pusimos de acuerdo. Necesito el programa
+    para imprimir la lista de invitados. El nombre final de la
+    empresa es `AXM SAC`, y las 3 áreas son (en orden):
+    `Administración`, `Tesorería` y `Ventas`.
+
+    La lista debe verse así:
+
+    <Sh code={"Lista de invitados:\n\n"
+        + "Administración de AXM SAC: Rosa\n"
+        + "Administración de AXM SAC: María\n"
+        + "Administración de AXM SAC: Andrea\n"
+        + "Tesorería de AXM SAC: Rodrigo\n"
+        + "Tesorería de AXM SAC: Pedro\n"
+        + "Ventas de AXM SAC: Raul\n"
+        + "Ventas de AXM SAC: Ana\n"
+    } />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        const empresa = "AXM SAC"; // [!code focus:13]
+        const area_1 = "Administración";
+        const area_2 = "Tesorería";
+        const area_3 = "Ventas";
+
+        std.debug.print("Lista de invitados:\n\n", .{});
+        std.debug.print("{} de {}: Rosa\n", .{area_1, empresa});
+        std.debug.print("{} de {}: María\n", .{area_1, empresa});
+        std.debug.print("{} de {}: Andrea\n", .{area_1, empresa});
+        std.debug.print("{} de {}: Rodrigo\n", .{area_2, empresa});
+        std.debug.print("{} de {}: Pedro\n", .{area_2, empresa});
+        std.debug.print("{} de {}: Raul\n", .{area_3, empresa});
+        std.debug.print("{} de {}: Ana\n", .{area_3, empresa});
+    }
+    ```
+    </Fragment>
+</Exercise>
+
 
 
 

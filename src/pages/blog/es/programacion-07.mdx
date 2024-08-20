@@ -10,6 +10,8 @@ image:
     alt: ""
     caption: ""
 ---
+import Exercise from "../../../components/Blog/Exercise.astro"
+import Sh from "../../../components/Blog/Sh.astro"
 
 En este artículo aprenderemos más acerca de la impresión,
 especialmente un aspecto importante para futúros artículos:
@@ -83,4 +85,27 @@ Hemos visto el formato `{s}`, pero existen muchos más,
 que aprenderemos a medida que los necesitemos.
 
 
+## Ejercicios
 
+Resuelve estos ejercicios en tu editor de texto VSCode.
+Al ejecutar debe salir en el terminal el mismo resultado
+que el del enunciado.
+
+Si estas atascado en un problema puedes mostrar la solución,
+pero intenta resolverlos por ti mismo antes.
+
+<Exercise>
+    1: Utiliza el formato `{s}` para imprimir:
+
+    <Sh code={"Hola mundo"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        std.debug.print("Hola {s}", .{"mundo"}); // [!code focus]
+    }
+    ```
+    </Fragment>
+</Exercise>

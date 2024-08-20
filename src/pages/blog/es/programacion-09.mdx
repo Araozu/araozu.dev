@@ -10,6 +10,8 @@ image:
     alt: "Imágen del meme 'Matemáticas hijo'"
     caption: "¡Matemáticas hijo!"
 ---
+import Exercise from "../../../components/Blog/Exercise.astro"
+import Sh from "../../../components/Blog/Sh.astro"
 
 En este artículo vemos 3 conceptos: Comentarios, números
 y operaciones matemáticas.
@@ -70,6 +72,23 @@ pub fn main() !void {  // Este es un comentario al final
 
 A partir de ahora, utilizaré comentarios en el código
 para explicar mejor los conceptos.
+
+
+### Strings vs comentarios
+
+Los comentarios no pueden ir dentro de un string:
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const nombre = "Juan // no es comentario"
+    std.debug.print("Hola {s}", .{nombre});
+}
+```
+
+<Sh code="Hola Juan" />
+
 
 
 ## Números
@@ -182,6 +201,21 @@ agruparlas con paréntesis.
 
 ```zig
     const resultado = 80 + 20 / (5 - 3);
+```
+
+Y puedes utilizar variables:
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const largo = 150; // [!code focus:6]
+    const ancho = 70;
+    const area = largo * ancho; // [!code highlight]
+
+    // Imprime `El área es 10500m2`
+    std.debug.print("El área es {d}m2", .{area});
+}
 ```
 
 
