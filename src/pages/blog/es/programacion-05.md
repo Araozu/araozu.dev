@@ -55,7 +55,7 @@ Entra a `src/main.zig` y reemplaza todo el código que está ahí
 por el código de arriba.
 
 > Nota: Puede que notes que las imágenes no sean exáctamente
-    iguales a como cuando tu escribas el código.
+    iguales a como cuando escribas el código.
     No te preocupes, no es un problema.
 
 Una vez que hayas modificado el código, verás un punto blanco arriba:

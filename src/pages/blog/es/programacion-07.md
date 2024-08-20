@@ -20,8 +20,8 @@ formatos.
 El código para imprimir texto tiene dos partes:
 
 ```zig
-//              --- 1 ---  -2-
-std.debug.print("formato", .{});
+    //              --- 1 ---  -2-
+    std.debug.print("formato", .{});
 ```
 
 - 1: un formato (string)
@@ -69,7 +69,7 @@ saber que se pueden utilizar.
 const std = @import("zig");
 
 pub fn main() !void {
-    const nombre = "Juan";
+    const nombre = "Juan"; // [!code focus:4]
     const apellido = "Perez";
     std.debug.print("{s} {s}", .{nombre, apellido});
     // Imprime: `Juan Perez`

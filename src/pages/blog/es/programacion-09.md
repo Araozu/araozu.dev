@@ -31,9 +31,11 @@ y terminan cuando acaba la linea.
 
 
 ```zig
-// Este es un comentario
+const std = @import("std");
+
+// Este es un comentario // [!code highlight]
 pub fn main() !void {
-    // Este también es un comentario
+    // Este también es un comentario // [!code highlight]
     std.debug.print("Hola", .{});
 }
 ```
@@ -45,20 +47,23 @@ Si quieres un comentario que abarque varias lineas,
 cada linea debe iniciar con doble slash:
 
 ```zig
+const std = @import("std");
+
 pub fn main() !void {
-    // Este es un comentario
+    // Este es un comentario // [!code highlight:3] // [!code focus:4]
     // que ocupa 3 lineas
     // de texto :D
     std.debug.print("Hola", .{});
 }
 ```
 
-También puedes escribir un comentario en
-medio de una linea con código, pero no
-es recomendable.
+También puedes escribir un comentario al final
+de una linea con código, pero no es recomendable.
 
 ```zig
-pub fn main() !void {  // Este es un comentario
+const std = @import("std");
+
+pub fn main() !void {  // Este es un comentario al final
     std.debug.print("Hola", .{}); // Este también
 }
 ```
@@ -84,7 +89,7 @@ es el siguiente:
 const std = @import("std");
 
 pub fn main() !void {
-    std.debug.print("{d}", .{322});
+    std.debug.print("{d}", .{322}); // [!code focus] // [!code highlight]
 }
 ```
 
@@ -107,7 +112,7 @@ También podemos utilizar números en variables:
 const std = @import("std");
 
 pub fn main() !void {
-    const edad = 32;
+    const edad = 32; // [!code focus:3] // [!code highlight]
     // Imprime: `Tengo 32 años`
     std.debug.print("Tengo {d} años", .{edad});
 }
@@ -155,14 +160,14 @@ refiera a los números enteros.
 Ahora que sabemos cómo crear números (int), podemos hacer
 operaciones con ellos.
 
-Zig soporta las operaciones que conoces: suma `+`,
+Zig ofrece las operaciones que conoces: suma `+`,
 resta `-`, multiplicación `*` y división `/`.
 
 ```zig
 const std = @import("std");
 
 pub fn main() !void {
-    const r1 = 9 + 3;   // 12
+    const r1 = 9 + 3;   // 12 // [!code focus:7]
     const r2 = 9 - 3;   // 6
     const r1 = 9 * 3;   // 27
     const r1 = 9 / 3;   // 3

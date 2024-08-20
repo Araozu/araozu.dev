@@ -7,6 +7,7 @@ import {
     transformerMetaHighlight,
     transformerNotationHighlight,
     transformerNotationErrorLevel,
+    transformerNotationWordHighlight,
 } from '@shikijs/transformers'
 
 // https://astro.build/config
@@ -24,6 +25,7 @@ export default defineConfig({
                 transformerMetaHighlight(),
                 transformerNotationHighlight(),
                 transformerNotationErrorLevel(),
+                transformerNotationWordHighlight(),
             ],
             defaultColor: false,
         }

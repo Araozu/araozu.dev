@@ -29,7 +29,7 @@ Digamos que la persona se llama `Juan`. El código es así:
 const std = @import("std");
 
 pub fn main() !void {
-    std.debug.print("Hola {s}\n", .{"Juan"});
+    std.debug.print("Hola {s}\n", .{"Juan"}); // [!code focus:3]
     std.debug.print("Tu pedido cuesta {s} dolares\n", .{"20"});
     std.debug.print("Adios {s}\n", .{"Juan"});
 }
@@ -47,7 +47,7 @@ Entonces tendríamos que repetirlo 10 veces.
 const std = @import("std");
 
 pub fn main() !void {
-    std.debug.print("Hola {s}\n", .{"Juan"});
+    std.debug.print("Hola {s}\n", .{"Juan"}); // [!code focus:10]
     std.debug.print("Hola {s}\n", .{"Juan"});
     std.debug.print("Hola {s}\n", .{"Juan"});
     std.debug.print("Hola {s}\n", .{"Juan"});
@@ -86,10 +86,10 @@ y a partir de ese momento cada vez que usemos
 Por ejemplo:
 
 ```zig
-const std = @import("std");
+const std = @import("std"); // [!code word:nombre]
 
 pub fn main() !void {
-    const nombre = "Juan";
+    const nombre = "Juan"; // [!code focus:2] // [!code highlight]
     std.debug.print("Hola {s}\n", .{nombre});
 }
 ```
@@ -108,10 +108,10 @@ Podemos utilizar la variable las veces que queramos.
 Si imprimimos 10 veces se vería así:
 
 ```zig
-const std = @import("std");
+const std = @import("std"); // [!code word:nombre]
 
 pub fn main() !void {
-    const nombre = "Juan";
+    const nombre = "Juan"; // [!code focus:11]
     std.debug.print("Hola {s}\n", .{nombre});
     std.debug.print("Hola {s}\n", .{nombre});
     std.debug.print("Hola {s}\n", .{nombre});
@@ -133,10 +133,10 @@ Ahora, si queremos cambiar `Juan` por `Maria`,
 solo tenemos que hacerlo en un lugar:
 
 ```zig
-const std = @import("std");
+const std = @import("std"); // [!code word:nombre]
 
 pub fn main() !void {
-    const nombre = "Maria";
+    const nombre = "Maria"; // [!code focus:11]
     std.debug.print("Hola {s}\n", .{nombre});
     std.debug.print("Hola {s}\n", .{nombre});
     std.debug.print("Hola {s}\n", .{nombre});
