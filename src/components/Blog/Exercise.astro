@@ -1,0 +1,42 @@
+<div class="border-l border-c-on-bg pl-4 my-8">
+    <slot />
+
+    <div>
+        <button class="inline-block py-2 px-4 rounded-md bg-cyan-300 text-cyan-950
+            font-bold hover:underline exercise-button"
+        >
+            Mostrar solución
+        </button>
+    </div>
+
+    <div class="pt-4 hidden exercise-solution">
+        <slot name="solution" />
+    </div>
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        const solutionButtons = document.querySelectorAll(".exercise-button");
+
+        for (const button of solutionButtons) {
+            button.addEventListener("click", (ev) => {
+                const el = ev.target as HTMLButtonElement;
+                const button_text = el.innerText;
+                const solution_div = el.parentElement?.parentElement?.querySelector(".exercise-solution");
+
+                if (!solution_div) {
+                    console.error("A solution button doesn't have its correspoding solution");
+                    console.error(el);
+                }
+
+                if (button_text === "Mostrar solución") {
+                    el.innerText = "Ocultar solución";
+                } else {
+                    el.innerText = "Mostrar solución";
+                }
+
+                solution_div?.classList.toggle("hidden");
+            });
+        }
+    });
+</script>

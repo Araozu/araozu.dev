@@ -1,7 +1,7 @@
 ---
 import BlogLayout from "../../../layouts/BlogLayout.astro";
 
-const allPosts = await Astro.glob("./*.md");
+const allPosts = await Astro.glob("./*.{md,mdx}");
 ---
 
 <BlogLayout lang="es">

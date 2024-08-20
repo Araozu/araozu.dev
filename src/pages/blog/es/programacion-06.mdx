@@ -10,6 +10,9 @@ image:
     alt: ""
     caption: ""
 ---
+import Exercise from "../../../components/Blog/Exercise.astro"
+import Sh from "../../../components/Blog/Sh.astro"
+
 
 En el artículo anterior escribimos nuestro primer programa:
 Hola mundo. En este artículos vamos a modificar el mensaje
@@ -148,13 +151,111 @@ pub fn main() !void {
 
 Cada instrucción se coloca en una linea nueva.
 
-
 ## Siguiente
 
 En el siguiente artículo continuaremos trabajando
 con impresiones, y aprenderemos qué es ese dato
 adicional misterioso.
 
+
+## Ejercicios
+
+Resuelve estos ejercicios en tu editor de texto VSCode.
+Al ejecutar debe salir en el terminal el mismo resultado
+que el del enunciado.
+
+Si estas atascado en un problema puedes mostrar la solución,
+pero intenta resolverlos por ti mismo antes.
+
+<Exercise>
+    1: Utiliza `std.debug.print` para imprimir:
+
+    <Sh code={"Son las 10:00pm"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        std.debug.print("Son las 10:00pm", .{}); // [!code focus]
+    }
+    ```
+    </Fragment>
+</Exercise>
+
+<Exercise>
+    2: Escribe un programa que imprima el siguiente texto
+    (necesitaras usar `\n` para crear 2 lineas):
+
+    <Sh code={"hola\nmundo"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        std.debug.print("hola\nmundo", .{}); // [!code focus]
+    }
+    ```
+    </Fragment>
+</Exercise>
+
+<Exercise>
+    3: Escribe un programa que imprima el siguiente texto.
+    Utiliza 1 `std.debug.print` para cada linea
+
+    <Sh code={"El\ncielo\nes\nazul"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        std.debug.print("El\n", .{}); // [!code focus:4]
+        std.debug.print("cielo\n", .{});
+        std.debug.print("es\n", .{});
+        std.debug.print("azul\n", .{});
+    }
+    ```
+    </Fragment>
+</Exercise>
+
+<Exercise>
+    4: Escribe un programa que imprima el siguiente texto.
+    Utiliza **solo 1** `std.debug.print`;
+
+    <Sh code={"El\ncielo\nes\nazul"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        std.debug.print("El\ncielo\nes\nazul\n", .{}); // [!code focus]
+    }
+    ```
+    </Fragment>
+</Exercise>
+
+<Exercise>
+    5: Escribe un programa que imprima el siguiente texto
+    (fíjate en los espacios en blanco antes de cada palabra):
+
+    <Sh code={"    El\n    cielo\n    es\n    azul"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        std.debug.print("    El\n", .{}); // [!code focus:4]
+        std.debug.print("    cielo\n", .{});
+        std.debug.print("    es\n", .{});
+        std.debug.print("    azul\n", .{});
+    }
+    ```
+    </Fragment>
+</Exercise>
 
 
 
