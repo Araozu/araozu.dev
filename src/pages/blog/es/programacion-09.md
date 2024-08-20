@@ -189,4 +189,41 @@ agruparlas con paréntesis.
 
 ## Números racionales (float)
 
+Hemos visto números enteros, pero también podemos
+utilizar números reales. Estos se llaman `float`
+y vienen del ingles 
+["floating point number"](https://es.wikipedia.org/wiki/Coma_flotante).
+
+La mayor diferencia es que los `float` permiten usar
+decimales, mientras que los `int` no.
+
+Para imprimir un float tambien se usa el formato `{d}`.
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const ratio_de_cambio = 1.1005; // [!code focus:2]
+    std.debug.print("El ratio es {d}", .{ratio_de_cambio});
+}
+```
+
+También puedes utilizar las operaciones matemáticas con
+los `float`.
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const r1 = 4.5 + 3.2; // [!code focus:5]
+    const r2 = 3.3 - 1.1;
+    const r3 = -55 * 0.2;
+    const r4 = 33.33 / 3.3;
+    std.debug.print("{d} {d} {d} {d}", .{r1, r2, r3, r4});
+}
+```
+
+
+
+
 
