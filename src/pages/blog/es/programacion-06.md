@@ -13,159 +13,148 @@ image:
 
 En el artículo anterior escribimos nuestro primer programa:
 Hola mundo. En este artículos vamos a modificar el mensaje
-y aprender el primer concepto: Strings
+y aprender un primer concepto llamado Strings.
+
+Como siempre, vamos a trabajar en el archivo `src/main.zig`
+del proyecto que creamos anteriormente.
+
+## Hola mundo modificado
+
+En el programa que escribimos hay un monton de palabras,
+y seguramente no las entiendas. Ahora mismo, lo que vamos a
+hacer es modificar el texto que aparece.
+
+Primero, observemos el código:
+
+![Codigo](/img/blog/es/tutorial/1x/014.jpg)
+
+Lo que nos importa ahora mismo es la frase `Hola mundo`.
+Hay algunas particularidades:
+
+- La frase tiene un color rojizo, mientras que
+    otras palabras tienen otros colores
+- La frase inicia con una comilla doble `"`,
+    y acaba con otra.
+- Hay dos caracteres: `\` y `n` que no aparecen
+    al ejecutar el programa.
+
+Toda la frase es algo llamado un string. Un string
+es una secuencia de letras (caracteres) que unidas
+forman un texto.
+
+Los strings se utilizan para representar texto.
+Ahora lo vas a modificar.
+
+En el código, reemplaza `Hola` por `Adios`, y
+ejecuta el programa. Veras que ahora el mensaje
+que sale es `Adios mundo!`
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    std.debug.print("Adios mundo!\n", .{}); // [!code focus]
+}
+```
+
+![Codigo](/img/blog/es/tutorial/1x/015.jpg)
 
 
-## Modificando "Hola mundo"
 
-Entra a la página web
-[https://zig.fly.dev/p/xNluereqmgW](https://zig.fly.dev/p/xNluereqmgW),
-donde se encuentra el programa "Hola mundo". Esta vez vamos a modificar
-el mensaje.
+## Strings
 
-El resto de las palabras son magia negra. Te habras dado cuenta que
-hay palabras en español: Hola y mundo.
+Los strings tienen algunas reglas:
 
-![Zig online](/img/blog/es/tutorial/009-zig.jpg)
+Para que sea fácil diferenciarlos, los strings
+automáticamente se marcan de color rojizo.
 
-Hay varias cosas que notar:
+Un string siempre inicia con una comilla doble `"`,
+y termina con otra. Las comillas marcan el inicio
+y fin del string.
 
-- Estan pintadas de color amarillo
-- Tienen comillas dobles `"` al inicio y al final
+Si colocas una comilla dentro de un string, lo que
+pasará es que el string terminará antes. Eso lo podrás
+ver por el color:
 
-Dentro de estas comillas `"` podemos escribir el texto que querramos.
+![Codigo](/img/blog/es/tutorial/1x/016.jpg)
 
-Por ejemplo, si reemplazas `Hola` por `Adios` y ejecutas el programa,
-se imprimirá `Adios mundo!`
-
-![Zig online](/img/blog/es/tutorial/010-zig.jpg)
-
-![Zig online](/img/blog/es/tutorial/011-zig.jpg)
-
-Y también, si reemplazas `mundo` por otra palabra, se imprimirá
-lo que escribiste.
-
-Tambien puedes agregar otro texto en ambos lados. Por ejemplo:
-
-![Zig online](/img/blog/es/tutorial/012-zig.jpg)
+En la imagen superior puedes notar que `Juan` está
+de color azúl, no rojo.
 
 
-## Strings / cadenas de caracteres
+Dentro de un string puede ir (casi) cualquier texto,
+con tal que esté dentro de la misma linea. Si
+la linea termina antes que el string, tendrás un error.
 
-Los strings (cadenas de caracteres en inglés) son la forma
-en la que almacenamos texto.
+![Codigo](/img/blog/es/tutorial/1x/017.jpg)
 
-Un string empieza con una comilla doble `"`, el contenido
-del string, y termina con una comilla doble `"`.
+Si quieres un texto con una linea nueva se utiliza
+una combinación especial de caracteres: `\n`.
+Estos 2 caracteres cuando estan juntos se traducen
+a una nueva linea:
 
-Unos ejemplos de strings son: `"hola"`, `"adios"`,
-`"multiples palabras"`, `"123456"`.
 
-En el programa de arriba hay 2 strings:
+```zig
+const std = @import("std");
 
-![Zig online](/img/blog/es/tutorial/013-zig.jpg)
+pub fn main() !void {
+    std.debug.print("En la calle hay\nuna moto y un auto", .{}); // [!code focus]
+}
+```
 
-Estos strings son lo que se muestra en pantalla al
-ejecutar el programa.
+![Codigo](/img/blog/es/tutorial/1x/018.jpg)
 
-Los strings tienen algunas características:
-
-- En el código, los strings tienen otro color para que
-    sea más fácil identificarlos.
-- No puede haber comillas dentro de un string.
-    
-    El string termina cuando aparece la primera comilla.
-    Por ejemplo:
-
-    ![Zig online](/img/blog/es/tutorial/014-zig.jpg)
-
-    Aquí el string termina despues del `Hola `, la palabra
-    `familia` no es parte del string. Puedes ver que el
-    color amarillo del string termina en la segunda comilla,
-    y la palabra familia está de color blanco.
-
-- No puede haber nuevas lineas en un string. Esto es un error:
-
-    ![Zig online](/img/blog/es/tutorial/015-zig.jpg)
-
-    Sin embargo, hay ocasiones donde queremos tener varias lineas
-    en un string. Para esto se utilizan 2 caracteres especiales:
-    `\n`. Estos nos permiten "señalar" que ahí va una linea nueva.
-
-    ![Zig online](/img/blog/es/tutorial/016-zig.jpg)
-
-    Estos caracteres especiales se conocen como "caracteres de escape".
-    Hay varios de ellos, pero no los veremos por ahora.
-
+Esto último es llamado un "caracter de escape". Hay varios
+de ellos, pero los veremos más adelante.
 
 ## Impresión
 
-Imprimir es mostrar información a través de la pantalla. Esta
-información puede ser palabras, letras, números, símbolos, etc.
+Imprimir es que nuestro programa muestre un texto en pantalla.
+Todas las veces que hemos ejecutado nuestro programa, y
+aparecío un texto, hemos estado imprimiendo.
 
-Para imprimir en Zig se escribe lo siguiente:
+Zig tiene una instrucción para imprimir texto: `std.debug.print`, que hemos estado utilizando.
 
-![Zig online](/img/blog/es/tutorial/017-zig.jpg)
+Esta instrucción tiene 3 partes:
 
-`std.debug.print` es una invocación que imprime lo que tenga
-dentro. Para poner algo dentro, se utilizan parentesis `()`.
+- 1: La instrucción en sí
+- 2: El texto (string) a imprimir
+- 3: Un dato adicional misterioso
 
-Dentro de los paréntesis va el string que queremos imprimir
-y una secuencia misteriosa, así: `("Tu mensaje", .{})`.
+![Codigo](/img/blog/es/tutorial/1x/019.jpg)
 
-Y finalmente, muy importante, todas las invocaciones
-terminan con un punto y coma `;`. Si la invocación
-no termina con su punto y coma tendrás un error misterioso.
+Dentro del string (2) podemos poner lo que querramos.
+Pero el resto tiene que estar igual, los parentesis,
+comas, llaves y punto y coma.
 
-Por ejemplo, para imprimir un nuevo texto `Me gusta Zig`
-se escribiriá el código así:
+Adicionalmente, todas las instrucciones terminan
+con un punto y coma `;`. Este señala que la instrucción
+terminó, y esta lista para ejecutarse.
 
-`std.debug.print("Me gusta Zig", .{});`
+En nuestro programa podemos tener varias intrucciones,
+cada una imprimiendo algo nuevo:
 
-Podemos tener varias invocaciones a la vez, y ejecutarlas en
-siempre que la invocación esté bien escrita.
+```zig
+const std = @import("std");
 
-![Zig online](/img/blog/es/tutorial/018-zig.jpg)
+pub fn main() !void {
+    std.debug.print("Hola\n", .{}); // [!code focus:3]
+    std.debug.print("Soy fernando\n", .{}); 
+    std.debug.print("Adios\n", .{}); 
+}
+```
 
-Y al ejecutar el programa se imprimiran los mensajes en orden.
+![Codigo](/img/blog/es/tutorial/1x/020.jpg)
 
-![Zig online](/img/blog/es/tutorial/019-zig.jpg)
-
-
-## Nuevas lineas
-
-Notarás que el mensaje se imprimió junto: `Mi primera impresiónMe gusta Zig`.
-
-Este es un buen momento para presentar un concepto muy importante:
-la computadora hace lo que le pides, no lo que quieres.
-
-El código que ejecutamos no le pide a la computadora que imprima
-una nueva linea `\n`. Así que la computadora no la imprime.
-
-Para tener una nueva linea hay que incluirla en los strings, y con
-eso al ejecutar estará cada linea separada:
-
-![Zig online](/img/blog/es/tutorial/020-zig.jpg)
-
-![Zig online](/img/blog/es/tutorial/021-zig.jpg)
+Cada instrucción se coloca en una linea nueva.
 
 
+## Siguiente
 
-## Glosario
+En el siguiente artículo continuaremos trabajando
+con impresiones, y aprenderemos qué es ese dato
+adicional misterioso.
 
-No es necesario que memorices o entiendas estas palabras.
 
-- String: "cadena de caracteres"
-- `const`: abreviatura de "constante", que no cambia
-- `std`: abreviatura de "estandar"
-- `import`: "importar"
-- `pub`: abreviatura de "público", que es accesible
-- `fn`: abreviatura de "función". en este artículo les llamé
-    invocaciones
-- `void`: "vacio"
-- `main`: "principal"
-- `debug`: el debugging es un proceso mediante el cual
-    se eliminan errores (tambien conocidos como "bugs")
-- `print`: "imprimir"
 
 
