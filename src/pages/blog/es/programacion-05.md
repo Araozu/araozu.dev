@@ -20,41 +20,63 @@ modificarlo y entender algunos otros conceptos.
 Hola mundo es tradicionalmente el [primer programa](https://es.wikipedia.org/wiki/Hola_mundo)
 que se escribe cuando se aprende a programar.
 
-Vamos a empezar con este programa. Entra a la siguiente página web:
-[https://zig.fly.dev/p/xNluereqmgW](https://zig.fly.dev/p/xNluereqmgW)
+Abre VSCode y abre el proyecto que creaste en el artículo anterior.
 
-Veras lo siguiente:
+Allí, abre el archivo `src/main.zig`.
 
-![Zig online 1](/img/blog/es/tutorial/007-zig1.jpg)
+![VSCode](/img/blog/es/tutorial/063-zig.jpg)
 
-Arriba está el nombre de la página: "Zig Playground". A su derecha hay 3 botones en inglés:
+A partir de ahora vamos a trabajar en ese único archivo.
 
-- "Run" ejecuta el programa.
-- "Format" hace algo llamado 'formatear' el código. No lo usaremos aún.
-- "Share" comparte el código que escribimos. No lo usaremos.
+Verás un montón de código raro:
 
-Dentro del recuadro plomo está escrito el código **Zig**. No lo modifiques aún.
+![VSCode](/img/blog/es/tutorial/078-zig.jpg)
 
-Si lo modificaste y quieres volver al código original, cierra la página y vuelve a
-abrirla con el link de arriba.
+Vamos a eliminar todo y escribir desde cero.
 
-## Ejecutando el código
 
-Presiona el boton "Run". Aparecerá texto debajo del recuadro del código:
+## Hola mundo
 
-![Zig online 2](/img/blog/es/tutorial/008-zig.png)
+El primer programa siempre es el más fácil. Vas a escribirlo
+(o copiar y pegar) y ejecutarlo.
 
-Este texto es el resultado de ejecutar el programa. Se lee:
+Borra todo el contenido del archivo `src/main.zig` y
+coloca lo siguiente:
 
-- `Hola mundo!` : Este es el resultado del programa.
-- `Program exited.` : Significa "El programa terminó" en ingles. Nos 
-    indica que el programa terminó de ejecutarse. Puedes ignorarlo.
+```zig
+const std = @import("std");
 
-Felicidades! Has ejecutado tu primer programa.
+pub fn main() !void {
+    std.debug.print("Hola mundo!\n", .{});
+}
+```
 
-> Desafio: Borra todo el código y vuelve a escribirlo, exactamente igual.
-    Utiliza la imágen como guía.
+Entra a `src/main.zig` y reemplaza todo el código que está ahí
+por el código de arriba.
 
+> Nota: Puede que notes que las imágenes no sean exáctamente
+    iguales a como cuando tu escribas el código.
+    No te preocupes, no es un problema.
+
+Una vez que hayas modificado el código, verás un punto blanco arriba:
+
+![VSCode](/img/blog/es/tutorial/080-zig.jpg)
+
+Esto significa que el archivo está modificado, pero no guardado.
+Presiona `Control + S` para guardar el archivo.
+
+Ahora, ejecuta el código: Ve al terminal y ejecuta el comando
+`zig build run`:
+
+> Nota: Verás que mi terminal se ve diferente. Pero lo importante
+    son los comandos, y el resultado.
+
+![VSCode](/img/blog/es/tutorial/081-zig.jpg)
+
+El resultado sale abajo: `Hola mundo!`.
+
+
+¡Ejecutaste tu primer programa!
 
 ## ¿Qué significan todas estas letras?
 
@@ -66,59 +88,44 @@ Así como el francés, árabe o coreano, el **lenguaje** de programación Zig
 tiene un conjunto de reglas. Aprenderemos las reglas a medida que avance
 el tiempo. Mientras tanto, puedes ignorar todas esas palabras.
 
-> ¿Que pasa si eliminas alguna de esas palabras y ejecutas el programa 
-    (con el boton "Run")? ¿Qué mensaje obtienes? ¿Qué crees que significa?
 
-
-## Magia negra y abstracción
-
-Según [Significados.com](https://www.significados.com/abstracto/),
-abstracto significa vago, impreciso, teórico, que no tiene existencia
-física (entre otras cosas). Algo abstracto suele ser algo difícil
-de entender, o imaginario.
-
-
-En programación, abstracto tiene otro significado. Puedes buscar su
-definición técnica en internet, pero me parece muy confusa para
-un principiante, así que lo explicare en mis términos.
-
-En programación, abstracto significa que sabemos **qué** hace, pero
-no **cómo** lo hace. Un ejemplo claro sería un auto. Sabemos que
-al pisar el acelerador, el auto avanza. Pero no sabemos **cómo**
-pisar el acelerador ocasiona que el combustible se transforme en
-energía cinemática.
-
-Por ejemplo, voy a hablar más adelante de "imprimir" en el programa.
-Imprimir significa mostrar un mensaje en la pantalla. Sin embargo,
-no te voy a explicar cómo funciona la impresión. El concepto de
-"imprimir" es abstracto.
-
-### Magia negra
+## Magia negra
 
 Escuché este termino del canal de Youtube Imesi.net. Magia negra
-es algo que: no se qué hace, cómo funciona, ni tampoco me importa.
+es algo que: no se cómo funciona, ni tampoco me importa.
+Solo me importa lo que hace.
 
 Voy a utilizar el término "magia negra" para referirme a algo
 por lo que no necesitas preocuparte, o intentar entender. Por
-ejemplo, en el código de más arriba:
+ejemplo, en el codigo que escribiste y ejecutaste,
+todo lo de rojo es magia negra:
 
-![Zig online 1](/img/blog/es/tutorial/007-zig1.jpg)
-
-Todo el texto que dice:
 
 ```zig
-const std = @import("std")
+const std = @import("std"); // [!code error:3]
 
-pub fn main() {
-    std.debug.print();
+pub fn main() !void {
+    std.debug.print("Hola mundo!\n", .{});
+} // [!code error]
+```
+
+Todo lo de rojo tiene un significado, pero aun no necesitamos
+saber cuál es. Pero es importante que este ahí, tal como está
+escrito.
+
+Lo que nosotros vamos a escribir es lo de "adentro":
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    std.debug.print("Hola mundo!\n", .{}); // [!code focus] // [!code highlight]
 }
 ```
 
-es magia negra. Funciona, hace algo, pero no importa. No te
-preocupes en intentar entenderlo.
+Y a medida que aprendamos conceptos nuevos, descifraremos
+qué significan todas esas cosas.
 
-Eventualmente, y a medida que aprendas conceptos nuevos,
-entenderas qué significan esas cosas.
 
 
 ## Inglés

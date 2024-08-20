@@ -9,21 +9,21 @@
 }
 
 @font-face {
-	font-family: 'Iosevka Fixed Web';
-	font-display: swap;
-	font-weight: 700;
-	font-stretch: normal;
-	font-style: normal;
-	src: url('/Iosevka/Bold.woff2') format('woff2');
+    font-family: 'Iosevka Fixed Web';
+    font-display: swap;
+    font-weight: 700;
+    font-stretch: normal;
+    font-style: normal;
+    src: url('/Iosevka/Bold.woff2') format('woff2');
 }
 
 @font-face {
-	font-family: 'Iosevka Etoile Web';
-	font-display: swap;
-	font-weight: 900;
-	font-stretch: normal;
-	font-style: normal;
-	src: url('/IosevkaEtoile/Heavy.woff2') format('woff2');
+    font-family: 'Iosevka Etoile Web';
+    font-display: swap;
+    font-weight: 900;
+    font-stretch: normal;
+    font-style: normal;
+    src: url('/IosevkaEtoile/Heavy.woff2') format('woff2');
 }
 
 /* Iosevka from Xe Iaso: https://xeiaso.net/ https://github.com/Xe/iosevka  */

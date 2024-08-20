@@ -25,7 +25,7 @@ funcionan igual en Windows 11.
 ## Descargar e instalar VSCode
 
 Si sabes como instalar un programa y no necesitas instrucciones
-paso a paso, saltate esta sección.
+paso a paso, saltate esta sección y [ve a la siguiente sección](#introducción-a-vscode).
 
 Primero busca `VSCode` en Google, y entra a la primera página que
 sale.
