@@ -87,7 +87,7 @@ pub fn main() !void {
 }
 ```
 
-<Sh code="Hola Juan" />
+<Sh code="Hola Juan"></Sh>
 
 
 
@@ -258,6 +258,57 @@ pub fn main() !void {
 ```
 
 
+## Ejercicios
 
+Resuelve estos ejercicios en tu editor de texto VSCode.
+Al ejecutar debe salir en el terminal el mismo resultado
+que el del enunciado.
+
+
+
+<Exercise>
+    1: Tenemos un cubo con 2cm de ancho, 4cm de largo y 10cm de alto.
+    Crea variables para cada uno, calcula el volumen del cubo,
+    y imprímelo para que quede así:
+
+    <Sh code={"El volumen del cubo es 80cm3"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        const ancho = 2; // [!code focus:6]
+        const largo = 4;
+        const alto = 10;
+        const volumen = ancho * largo * alto;
+
+        std.debug.print("El volumen del cubo es {d}cm3", .{volumen});
+    }
+    ```
+    </Fragment>
+</Exercise>
+
+<Exercise>
+    2: Un círculo tiene un radio de 73cm. Calcula su área
+    tomando como valor de pi=`3.141592`, e imprime el
+    siguiente mensaje:
+
+    <Sh code={"El área del círculo es 16741.543768cm2"} />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        const radio = 73; // [!code focus:5]
+        const pi = 3.141592;
+        const area = pi * radio * radio;
+
+        std.debug.print("El área del círculo es {d}cm2", .{area});
+    }
+    ```
+    </Fragment>
+</Exercise>
 
 
