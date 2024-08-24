@@ -1,0 +1,273 @@
+---
+layout: ../../../layouts/BlogLayoutEs.astro
+title: "Cero a Zig 10: Escaneo"
+description: Escaneo desde stdin
+pubDate: "2024-08-24"
+tags: ["tech", "lenguajes", "intro", "tutorial", "zig", "VSCode"]
+image: 
+    url: ""
+    alt: ""
+    caption: ""
+---
+import Exercise from "../../../components/Blog/Exercise.astro"
+import Sh from "../../../components/Blog/Sh.astro"
+
+Si existe la impresión para mostrar información,
+existe también el escaneo para obtener información.
+
+En este artículo veremos cómo ingresar información
+a nuestro programa, procesarla, y expulsar (imprimir)
+el resultado.
+
+
+## Escaneo
+
+La operación contraria a la impresión se suele denominar
+escaneo. Escanear es una forma de ingresar información
+a nuestro programa. Esta información la ingresa la persona
+que utiliza nuestro programa.
+
+Por ejemplo, un programa podría multiplicar cualquier número
+que ingresemos por 10:
+
+<Sh code={"> Ingresa un número: 5\nEl resultado es: 50"} />
+
+Esto se entenderá mejor cuando ejecutes el siguiente programa.
+No te preocupes por entenderlo (aun), ejecútalo y ve cómo
+interactua.
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const stdin = std.io.getStdIn().reader();
+    const alloc = std.heap.page_allocator;
+
+    std.debug.print("> Ingresa una palabra: ", .{});
+    const input = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);
+
+    std.debug.print("Ingresaste {s}!", .{ input });
+}
+```
+
+Cuando ejecutes el programa se imprimirá el mensaje:
+
+<Sh code="> Ingresa una palabra: " />
+
+Y el programa se quedará quieto. Allí es cuando tienes que escribir,
+y presionar ENTER cuando hayas terminado de escribir.
+
+Ejecuta el programa varias veces y observa lo que sucede
+cuando ingreses diferentes palabras.
+
+
+## Magia negra
+
+Desafortunadamente y por varias razones técnicas,
+el código para escanear texto involucra varios
+conceptos avanzados (que eventualmente entenderemos).
+
+Estos son magia negra hasta nuevo aviso.
+
+Para escanear texto primero creamos 2 variables:
+`stdin` y `alloc`, tal como está en el código.
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const stdin = std.io.getStdIn().reader(); // [!code focus:2] // [!code highlight:2]
+    const alloc = std.heap.page_allocator;
+
+    std.debug.print("> Ingresa una palabra: ", .{});
+    const input = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);
+
+    std.debug.print("Ingresaste {s}!", .{ input });
+}
+```
+
+Estas las vamos a utilizar despues para escanear.
+Te recomiendo que esas variables siempre tengan esos
+nombres.
+
+Luego vamos a crear una nueva variable, la cual
+va a escanear el texto, y almacenarlo.
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const stdin = std.io.getStdIn().reader();
+    const alloc = std.heap.page_allocator;
+
+    std.debug.print("> Ingresa una palabra: ", .{});
+    const input = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50); // [!code focus] // [!code highlight]
+
+    std.debug.print("Ingresaste {s}!", .{ input });
+}
+```
+
+En este caso la variable se llama `input` (entrada en inglés),
+pero puede tener cualquier nombre.
+
+El código a la derecha del igual `=` es lo que escanea el texto.
+Detiene el programa, espera a que escribamos algo
+y presionemos ENTER, y almacena lo que escribimos en la variable
+`input`. Lo que escribimos se almacena como un `string`.
+
+Luego de eso ya podemos utilizar la variable como querramos.
+En el programa anterior simplemente la estamos imprimiendo.
+
+Las 2 variables `stdin` e `input`, y la sección de
+código `try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);`
+son magia negra. Las vamos a utilizar para escanear texto,
+pero (aun) no sabremos cómo funcionan o qué significan.
+
+
+## Impresión antes del escaneo
+
+Aunque no es obligatorio, es bueno imprimir un mensaje
+antes de escanear. Por ejemplo, en el programa anterior
+imprimimos `> Ingresa una palabra: `, y despues
+recién escaneamos. De esta forma estamos avisando al
+usuario del programa que necesita ingresar texto.
+
+Aquí hay otro ejemplo: Imprimimos `Ingresa tu nombre:` y
+en la siguiente linea escaneamos.
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const stdin = std.io.getStdIn().reader();
+    const alloc = std.heap.page_allocator;
+
+    std.debug.print("Ingresa tu nombre: ", .{}); // [!code focus:2] // [!code highlight:2]
+    const input = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);
+
+    std.debug.print("Ingresaste {s}!", .{ input });
+}
+```
+
+> ¿Qué sucede si imprimes una nueva linea (`\n`) antes de
+    escanear? ¿Cómo cambia la forma en la que se ejecuta el programa?
+
+
+## Múltiples escaneos
+
+Podemos utilizar `try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);`
+varias veces, para escanear varias lineas de información.
+
+Por ejemplo, el siguiente programa escanea primero un nombre,
+y despues un apellido.
+
+```zig
+const std = @import("std");
+
+pub fn main() !void {
+    const stdin = std.io.getStdIn().reader();
+    const alloc = std.heap.page_allocator;
+
+    std.debug.print("Ingresa tu nombre: ", .{});
+    const nombre = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50); // [!code focus] // [!code highlight]
+
+    std.debug.print("Ingresa tu apellido: ", .{});
+    const apellido = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50); // [!code focus] // [!code highlight]
+
+    std.debug.print("Hola {} {}!", .{ nombre, apellido });
+}
+```
+Las variables `stdin` y `alloc` solo se crean una vez, al inicio.
+
+
+
+## Ejercicios
+
+Resuelve estos ejercicios en tu editor de texto VSCode.
+Al ejecutar debe salir en el terminal el mismo resultado
+que el del enunciado.
+
+
+<Exercise>
+    1: Necesito un programa que escanee un nombre y un apellido,
+    e imprima una carta de invitación con esos datos.
+
+    Por ejemplo, si ingreso `John Doe`, el programa debería
+    imprimir lo sigiente:
+
+    <Sh code={"Estimado/a John Doe,\n\nQueda cordialmente invitado a la inauguración,\n"
+        + "que tendrá lugar este sábado a las 03.00pm."
+    } />
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        const stdin = std.io.getStdIn().reader();
+        const alloc = std.heap.page_allocator;
+
+        std.debug.print("Ingrese su nombre: ", .{});
+        const nombre = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);
+
+        std.debug.print("Ingrese tu apellido: ", .{});
+        const apellido = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);
+
+        std.debug.print("Estimado/a {} {},\n\n", .{ nombre, apellido });
+        std.debug.print("Queda cordialmente invitado a la inauguración,\n", .{});
+        std.debug.print("que tendrá lugar este sábado a las 03.00pm.", .{});
+    }
+    ```
+    </Fragment>
+</Exercise>
+
+
+<Exercise>
+    2: Crea un programa para hacer una encuesta.
+    La encuesta tendrá 3 preguntas:
+
+    - ¿Tienes hijos?
+    - ¿Tienes hermanos?
+    - ¿Vives con tus padres?
+
+    A cada pregunta el usuario responderá con `si` o `no`,
+    y al final de la encuesta el programa debe mostrar
+    las respuestas ingresadas.
+
+    Por ejemplo, esta es una ejecución del programa:
+
+    <Sh code={
+        "Bienvenido a la encuesta!\n\n"
+        + "1. ¿Tienes hijos? si\n"
+        + "2. ¿Tienes hermanos? no\n"
+        + "3. ¿Vives con tus padres? si\n\n"
+        + "Gracias por tus respuestas. Respondiste si, no, si."
+    } />
+
+    El usuario ingresa `si` o `no` despues de cada pregunta.
+
+    <Fragment slot="solution">
+    ```zig
+    const std = @import("std");
+
+    pub fn main() !void {
+        const stdin = std.io.getStdIn().reader();
+        const alloc = std.heap.page_allocator;
+
+        std.debug.print("Bienvenido a la encuesta!\n\n", .{});
+
+        std.debug.print("1. ¿Tienes hijos? ", .{});
+        const respuesta_1 = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);
+
+        std.debug.print("2. ¿Tienes hermanos? ", .{});
+        const respuesta_2 = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);
+
+        std.debug.print("3. ¿Vives con tus padres? ", .{});
+        const respuesta_3 = try stdin.readUntilDelimiterAlloc(alloc, '\n', 50);
+
+        std.debug.print("\nGracias por tus respuestas. Respondiste {s}, {s}, {s}.", .{respuesta_1, respuesta_2, respuesta_3});
+    }
+    ```
+    </Fragment>
+</Exercise>
+
