@@ -1,5 +1,5 @@
 :not(pre)>code {
-    font-family: "Iosevka Fixed Web", Iosevka, monospace;
+    font-family: var(--font-mono);
     border: solid 1px var(--c-border-2);
     padding: 0 0.25rem;
     border-radius: 0.25rem;
@@ -33,7 +33,7 @@ pre.astro-code>code .line::before {
 
 #blog h2 {
     font-size: 1.5rem;
-    font-family: "Iosevka Etoile Web", serif;
+    font-family: var(--font-display);
     font-weight: 900;
     margin-top: 3rem;
     margin-bottom: 1.5rem;
@@ -41,7 +41,7 @@ pre.astro-code>code .line::before {
 
 #blog h3 {
     font-size: 1.25rem;
-    font-family: "Iosevka Etoile Web", serif;
+    font-family: var(--font-display);
     font-weight: 900;
     margin-top: 2.25rem;
     margin-bottom: 1.5rem;

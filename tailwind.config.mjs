@@ -1,21 +1,21 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-	content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
-	theme: {
-		extend: {
-			colors: {
-				'c-bg': 'var(--c-bg)',
-				'c-on-bg': 'var(--c-on-bg)',
-				'c-bg-2': 'var(--c-bg-2)',
-			},
+    content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
+    theme: {
+        extend: {
+            colors: {
+                'c-bg': 'var(--c-bg)',
+                'c-on-bg': 'var(--c-on-bg)',
+                'c-bg-2': 'var(--c-bg-2)',
+            },
             fontFamily: {
-                "etoile": ["'Iosevka Etoile Web'", "serif"],
-                "display": ["'Outfit'", "sans-serif"],
+                "etoile": ["var(--font-display)"],
+                "display": ["var(--font-display)"],
             }
-		},
-	},
-	plugins: [
-        function ({ addComponents }) {
+        },
+    },
+    plugins: [
+        function({ addComponents }) {
             addComponents({
                 '.container': {
                     width: '98%',
@@ -34,5 +34,5 @@ export default {
                 },
             })
         }
-	],
+    ],
 }
