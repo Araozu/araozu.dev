@@ -1,9 +1,10 @@
 <div class="h-screen">
     <nav
-        class="fixed top-0 left-0 bg-white text-black rotate-[-90deg] font-display
-            w-[100vh] translate-y-[100vh] px-8 py-2 shadow shadow-zinc-500"
+        class="fixed top-0 left-0 rotate-[-90deg] font-display w-[100vh] translate-y-[100vh] p-2"
         style="transform-origin: 0% 0%;"
     >
+        <div class="shadow hover:shadow-md transition-shadow bg-c-bg-2 py-2 px-4 border border-zinc-600 dark:border-zinc-900 rounded-md">
+
         <a class="font-semibold inline-block text-2xl hover:underline" href="/">
             Fernando Araoz
         </a>
@@ -14,22 +15,6 @@
         >
         <a class="ml-6 inline-block hover:underline" href="/blog/es">Es Blog</a>
 
-        <svg width="1.5rem" height="1.5rem" class="absolute -bottom-6 right-0">
-            <filter id='shadow' color-interpolation-filters="sRGB">
-                <feDropShadow dx="1" dy="1" stdDeviation="2"
-                    flood-opacity="1"
-                    flood-color="#71717a"
-                />
-            </filter>
-            <g filter="url(#shadow)">
-                <path d="m 0 0 h 24 v 24 c 0 -12, -12 -24, -24 -24" fill="white" />
-            </g>
-        </svg>
-
-        <svg width="1.5rem" height="1.5rem" class="absolute -bottom-6 left-0">
-            <g filter="url(#shadow)">
-                <path d="m 24 0 h -24 v 24 c 0 -12, 12 -24, 24 -24" fill="white" />
-            </g>
-        </svg>
+        </div>
     </nav>
 </div>

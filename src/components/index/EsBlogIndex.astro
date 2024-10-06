@@ -1,0 +1,32 @@
+---
+import Card from "../Card.astro"
+
+const allPosts = await Astro.glob("../../pages/blog/en/*.md");
+---
+
+<Card title="en blog">
+    <div class="font-display">
+        <p>
+            Things I've thought about, about programming.
+        </p>
+
+    <ul class="py-4">
+        {
+            allPosts
+                .toSorted((x, y) =>
+                    x.frontmatter.pubDate > y.frontmatter.pubDate ? -1 : 1,
+                )
+                .map((post) => {
+                    return (
+                        <li class="py-1">
+                            {post.frontmatter.pubDate} -
+                            <a class="underline text-lg" href={post.url}>
+                                {post.frontmatter.title}
+                            </a>
+                        </li>
+                    );
+                })
+        }
+    </ul>
+    </div>
+</Card>

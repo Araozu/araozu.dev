@@ -32,7 +32,7 @@ lang = lang ?? "en";
                 <div class="py-6">
                     {
                         frontmatter?.title && (
-                            <h1 class="font-etoile text-center text-4xl py-2">
+                            <h1 class="font-display font-bold text-center text-4xl py-2">
                                 {frontmatter.title}
                             </h1>
                         )
@@ -62,26 +62,15 @@ lang = lang ?? "en";
                     }
                 </div>
 
-                <div class="text-base">
+                <div
+                    class="text-base shadow-lg p-2 bg-c-bg-2 rounded-md border border-slate-600 dark:border-transparent mb-2"
+                >
                     <slot />
-                </div>
-
-                <div class="pt-4 border-t border-c-on-bg">
-                    <h3>Comments/Comentarios</h3>
-                    <section id="isso-thread"
-
-                    >
-                        <noscript>Javascript needs to be activated to view comments.</noscript>
-                    </section>
                 </div>
 
                 <div class="min-h-40"></div>
             </div>
         </NavigationLayout>
 
-        <script data-isso="https://comments.araozu.dev/"
-            data-isso-lang={lang}
-            src="https://comments.araozu.dev/js/embed.min.js"
-        ></script>
     </body>
 </html>
