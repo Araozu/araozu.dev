@@ -5,7 +5,7 @@ description: |
     I diskile Java/Go's verbosity. I like Rust/Zig
     syntax sugar and semantics.
 pubDate: "2024-07-26"
-tags: ["tech", "languajes", "java", "rust", "go", "verbosity"]
+tags: ["tech", "languages", "java", "rust", "go", "verbosity"]
 image: 
     url: "/img/blog/en/langs/cover.jpg"
     alt: "Image of a kid eating sweets and other eating vegetables."

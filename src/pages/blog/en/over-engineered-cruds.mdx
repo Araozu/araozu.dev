@@ -1,0 +1,142 @@
+---
+layout: ../../../layouts/BlogLayout.astro
+title: Wrongly overengineered CRUDs
+description: How did we get here?
+pubDate: "2024-10-26"
+tags: ["javascript", "typescript", "react", "next", "nest", "security", "htmx"]
+image: 
+    url: ""
+    alt: ""
+    caption: ""
+---
+
+How did we get here?
+
+<p>
+<img src="https://htmx.org/img/memes/bellcurve.png" alt="A bell curve image, showing html+backend on both ends, and a learning path from roadmap.sh in the middle." style=" max-height: initial;" />
+</p>
+
+
+## Our projects
+
+As a preface, the work I do involves building systems for many companies.
+It's like building a mini ERP, suited for the needs of each company.
+We have a fixed amount of time to do it, usually 5-6 months, each project
+usually has 2-3 person working on it, and there are multiple projects
+running in parallel.
+
+And most of the apps are just CRUDs.
+
+
+## Our definitely (wrongly) overengineered tech stack
+
+Since we start new projects every 5-6 months we have the opportunity
+to use brand-new technology. If the project I'm currently in didn't start
+2 weeks ago, we would've been using Nextjs 15, which was released last
+monday.
+
+So, what is our bleeding edge web stack for building CRUD apps?
+
+### Split back/frontend
+
+Welcome to 2017. We split those and communicate between using JSON.
+However (at least in my project) we were all involved. I worked on
+backend and front, my colleage 1 does too, and colleage 2 worked
+both but it looks like they will be doing only front-end.
+
+But what is more weird about this split is:
+
+
+### Nextjs for the **frontend**
+
+We use Nextjs, a full-stack framework, as a front-end only thing.
+We generate a static bundle and ship it along our backend.
+
+How ironic that we use React Server Components, but those end
+up being statically rendered.
+
+
+### Redux (toolkit)
+
+Again, welcome to 2017. We have all our endpoints as global state,
+managed with mutations and queries.
+
+
+### tailwind, shadcn, etc
+
+Other less controvertial things are tailwind for styles,
+shadcn for premade components. The small things.
+
+
+### Nestjs (typescript) for the backend
+
+REST APIs written in JavaScript.
+
+I gues this wouldn't be that bad, except for the fact that
+JS is a trash language (fight me), and we could use something
+better.
+
+I'm not asking for Rust. I'm not even asking for Go. But can
+we please use dotnet or java?
+
+On the topic of backend, we use Prisma as an ORM. Personally,
+I rawdog my SQL, so I don't know about the latest and greatest
+ORM technologies. But something I will say is that, to create
+a user and assign it some roles, Prisma generated and executed
+47 SQL queries. Something to think about.
+
+---
+
+All of this, to render tables, forms and buttons. We don't need
+any fancy interactivity. At most, we need some polling to get
+the most up to date data.
+
+
+
+## Security? Never met her.
+
+The stack might be overengineered, sure, but is it wrong?
+These are preferences, see, we could replace Next with Svelte
+and Nest with Go and it would be the same right? Right?
+
+I think the problem of modern webdev is that we have prioritized
+moving **blazingly fast** over anything else. We take a lot of
+technologies that are **blazingly fast** to develop with on small
+apps, that when composed together, become a mess to mantain.
+
+Because with this structure and only 3 CRUDs, the frontend already
+has like 30 `.ts` and `.tsx` files for all the complexity. And,
+ironically, the thing is so big that is fragile.
+
+But I know that something is fundamentally bad when things like
+the following happen.
+
+What motivated to write this post was something the lead told me.
+We have a manual implementation of RBAC on the backend. But,
+no API endpoints check for permissions (authorization). All they
+do is check for credentials (authentication). So, the conversation
+went something like this:
+
+> Me: Hey, I was looking at the endpoints and noticed that
+there are no checks for authorization. Any user with any role
+with any permission can do anything, as long as they are logged in.
+Am I missing something?
+
+> Lead: Right. We don't do that. I thought we could just check those
+roles and permissions in the frontend, and disable some buttons
+or hide them. That should be enough.
+
+> Me: But, you know we must also secure the backend right? We can't
+rely on ui checks, anyoune can send an http request, and those
+should also be secure, right?
+
+> Lead: Nah, I don't think it's worth the effort. If we also work on
+security on the backend we will miss our deadlines. Disabling and
+hiding buttons in the frontend should be enough.
+
+> Me: 🤨😑🤮🫠
+
+to be continued...
+
+
+
