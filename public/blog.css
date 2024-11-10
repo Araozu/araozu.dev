@@ -74,6 +74,10 @@ pre.astro-code>code .line::before {
     margin-bottom: 0.5rem;
 }
 
+#blog ul {
+    padding-left: 1rem;
+}
+
 
 @media (prefers-color-scheme: dark) {
     .astro-code {
