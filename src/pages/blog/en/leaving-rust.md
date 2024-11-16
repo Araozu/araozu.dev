@@ -74,7 +74,7 @@ So, what to do?
 
 
 
-## Debugging my language knowledge rather than my program
+## Debugging my programming language knowledge rather than my application
 
 So, I admit defeat. The borrow checker defeated me. Maybe
 I'm not smart enough, maybe I need to go through the book
