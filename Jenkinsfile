@@ -1,22 +1,20 @@
 pipeline {
 agent {
-		docker {
+	docker {
 			image 'node:22'
 		}
 	}
-    stages {
-		stage('Install pnpm') {
+	stages {
+		stage("Build") {
+			agent {
+				docker {
+					image 'node:22-alpine'
+					reuseNode true
+				}
+			}
 			steps {
 				sh 'npm i -g pnpm'
-			}
-		}
-		stage('Install dependencies') {
-			steps {
 				sh 'pnpm i'
-			}
-		}
-		stage('Buid') {
-			steps {
 				sh 'pnpm build'
 			}
 		}
@@ -24,6 +22,8 @@ agent {
 			steps {
 				sh 'rm -rf /var/www/dev.araozu/*'
 				sh 'mv -f dist/* /var/www/dev.araozu/'
+				sh 'docker-compose down || true'
+				sh 'docker-compose up -d'
 			}
 		}
 	}

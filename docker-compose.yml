@@ -1,0 +1,23 @@
+services:
+  araozu_dev:
+    image: nginx:alpine
+    restart: unless-stopped
+    container_name: thp-lang
+    volumes:
+      - /var/www/dev.araozu/:/usr/share/nginx/html
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.thp.rule=Host(`araozu.dev`)"
+      - "traefik.http.routers.thp.entrypoints=websecure"
+      - "traefik.http.routers.thp.tls=true"
+      - "traefik.http.routers.thp.tls.certresolver=hetzner-resolver"
+      - "traefik.http.routers.thp.tls.domains[0].main=araozu.dev"
+      - "traefik.http.routers.thp.tls.domains[0].sans=*.araozu.dev"
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    name: proxy
+    external: true
+
