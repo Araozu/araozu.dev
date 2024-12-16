@@ -2,7 +2,7 @@ services:
   araozu_dev:
     image: nginx:alpine
     restart: unless-stopped
-    container_name: thp-lang
+    container_name: dev_araozu
     volumes:
       - /var/www/dev.araozu/:/usr/share/nginx/html
     labels:
