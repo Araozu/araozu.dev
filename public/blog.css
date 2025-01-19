@@ -6,7 +6,6 @@
 }
 
 pre.astro-code {
-    padding-top: 1rem;
     border-radius: 0.5rem;
     border: solid 1px var(--c-border-1);
     font-size: 0.8rem;

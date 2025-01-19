@@ -1,21 +1,22 @@
 ---
 import Card from "../Card.astro"
 
-const allPosts = await Astro.glob("../../pages/blog/en/*.md");
+const allPosts = (await Astro.glob("../../pages/blog/es/*.{md,mdx}"))
+    .toSorted((x,y) =>
+        x.frontmatter.pubDate > y.frontmatter.pubDate ? -1 : 1,
+)
+.slice(0,7);
 ---
 
-<Card title="en blog">
+<Card title="es blog">
     <div class="font-display">
         <p>
-            Things I've thought about, about programming.
+            Artículos acerca de programación y tecnología.
         </p>
 
     <ul class="py-4">
         {
             allPosts
-                .toSorted((x, y) =>
-                    x.frontmatter.pubDate > y.frontmatter.pubDate ? -1 : 1,
-                )
                 .map((post) => {
                     return (
                         <li class="py-1">
