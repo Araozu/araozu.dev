@@ -100,18 +100,36 @@ pre.astro-code>code .line::before {
 
 /* Shiki transformers */
 .astro-code {
-    --shiki-highlight-color: #cccccc;
+    --shiki-highlight-color: #e0e0e0;
     --shiki-highlight-word-color: #aaaaaa;
     --shiki-error-bg-color: rgba(244, 63, 63, 0.25);
 }
 
+.astro-code,
+.astro-code span {
+    color: var(--shiki-light) !important;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-light-font-style) !important;
+    font-weight: var(--shiki-light-font-weight) !important;
+    text-decoration: var(--shiki-light-text-decoration) !important;
+}
+
 @media (prefers-color-scheme: dark) {
     .astro-code {
-        --shiki-highlight-color: #343434;
+        --shiki-highlight-color: #192224;
         --shiki-highlight-word-color: #3a3a3a;
         --shiki-error-bg-color: rgba(244, 63, 94, 0.16);
     }
+  .astro-code,
+  .astro-code span {
+    color: var(--shiki-dark) !important;
+    /* Optional, if you also want font styles */
+    font-style: var(--shiki-dark-font-style) !important;
+    font-weight: var(--shiki-dark-font-weight) !important;
+    text-decoration: var(--shiki-dark-text-decoration) !important;
+  }
 }
+
 
 .line {
     display: inline-block;
