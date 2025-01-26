@@ -11,6 +11,7 @@ export default {
             fontFamily: {
                 "etoile": ["var(--font-display)"],
                 "display": ["var(--font-display)"],
+                "body": ["var(--font-body)"],
             }
         },
     },
