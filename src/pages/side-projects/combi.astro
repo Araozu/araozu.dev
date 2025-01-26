@@ -1,0 +1,26 @@
+---
+import SideProject from "../../layouts/SideProject.astro";
+---
+
+<SideProject
+    project_title="AQP Combi"
+    git_url="https://git.araozu.dev/fernando/aqp-combi"
+    page_url="https://combi.araozu.dev"
+    previous="#"
+    next="thp-page"
+    images_folder="combi"
+    logos={[
+        "go-logo",
+        "solid-logo",
+        "tailwind-logo",
+    ]}
+>
+    A page that shows the routes of public transport in
+    Arequipa, Peru.
+    <br />
+    <br />
+    For it I generated map tiles from OpenStreetMap data,
+    customized the stylesheets to use my own fonts and
+    colors, created my own tile server, scrapped it
+    with Go, and then built a SPA to serve the tiles.
+</SideProject>

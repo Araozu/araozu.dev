@@ -3,29 +3,20 @@ import SideProject from "../../layouts/SideProject.astro";
 ---
 
 <SideProject
-    project_title="Typed Hyperscript Processor (webpage)"
-    git_url="https://git.araozu.dev/fernando/thp-web"
-    page_url="https://thp.araozu.dev"
-    next="thp"
-    images_folder="thp"
+    project_title="Music-To-Go"
+    git_url="https://git.araozu.dev/fernando/music-to-go"
+    page_url="https://music.araozu.dev"
+    next="combi"
+    images_folder="musictogo"
     logos={[
-        "astro-logo",
+        "go-logo",
+        "htmx-logo",
         "tailwind-logo",
         "alpine-logo",
-        "ts-logo",
-        "rust-logo",
     ]}
 >
-    This is a static webpage that contains documentation
-    for the THP programming language.
-    <br />
-    <br />
-    THP is a strong, statically typed, functional first
-    language that compiles to PHP.
-    <br>
-    <br>
-    The page is written with Astro, and connects to the
-    compiler to provide syntax highlighting, error
-    detection, reference resolving and automatic
-    documentation generation.
+    A Music player that connects to a Navidrome Server.
+    I wrote it as an experiment to test the HATEOAS
+    architecture, and to see if it is capable of powering
+    a dynamic application.
 </SideProject>

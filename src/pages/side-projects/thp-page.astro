@@ -1,0 +1,32 @@
+---
+import SideProject from "../../layouts/SideProject.astro";
+---
+
+<SideProject
+    project_title="Typed Hyperscript Processor (webpage)"
+    git_url="https://git.araozu.dev/fernando/thp-web"
+    page_url="https://thp.araozu.dev"
+    previous="combi"
+    next="thp"
+    images_folder="thp"
+    logos={[
+        "astro-logo",
+        "tailwind-logo",
+        "alpine-logo",
+        "ts-logo",
+        "rust-logo",
+    ]}
+>
+    This is a static webpage that contains documentation
+    for the THP programming language.
+    <br />
+    <br />
+    THP is a strong, statically typed, functional first
+    language that compiles to PHP.
+    <br>
+    <br>
+    The page is written with Astro, and connects to the
+    compiler to provide syntax highlighting, error
+    detection, reference resolving and automatic
+    documentation generation.
+</SideProject>
