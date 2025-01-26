@@ -4,7 +4,7 @@ import GithubIcon from "../components/Sideprojects/GithubIcon.astro";
 import GlobeIcon from "../components/Sideprojects/GlobeIcon.astro";
 import NavigationLayout from "./NavigationLayout.astro";
 
-const { project_title, git_url, page_url, previous, next, images_folder } = Astro.props;
+const { project_title, git_url, page_url, previous, next, images_folder, logos = [] } = Astro.props;
 
 const images_base = "/img/projects/";
 const images = readdirSync(`./public${images_base}${images_folder}/`)
@@ -34,7 +34,36 @@ const images_str = JSON.stringify(images);
     </head>
     <body>
         <NavigationLayout>
-            <div class="grid grid-cols-[30rem_auto] gap-2">
+            <div class="grid lg:grid-cols-[30rem_auto] gap-2">
+                <div
+                    class="relative w-full flex items-center justify-center p-2 lg:hidden pb-12"
+                    x-data={`{img: ${images_str}, img_len: ${images.length}, idx: 0}`}
+                >
+                    <button 
+                        class="absolute left-1 -bottom-0 bg-zinc-800 border border-zinc-950
+                            rounded py-1 px-2 text-2xl not:disabled:hover:bg-zinc-700 transition-all
+                            disabled:opacity-25"
+                        x-bind:disabled="idx === 0"
+                        x-on:click="idx -= 1"
+                    >
+                        &larr;
+                    </button>
+                    <button 
+                        class="absolute right-1 -bottom-0 bg-zinc-800 border border-zinc-950 text-white
+                            rounded py-1 px-2 text-2xl not:disabled:hover:bg-zinc-700 transition-all
+                            disabled:opacity-25"
+                        x-bind:disabled="idx === img_len - 1"
+                        x-on:click="idx += 1"
+                    >
+                        &rarr;
+                    </button>
+                    <img
+                        class="inline-block shadow-sm dark:shadow-black rounded"
+                        x-bind:src="img[idx]"
+                        alt="Project image"
+                    />
+                </div>
+
                 <div class="flex items-center justify-center gap-4 flex-col">
                     <div
                         class="bg-c-bg-2 rounded p-4 shadow shadow-zinc-500 dark:shadow-black w-full"
@@ -48,6 +77,16 @@ const images_str = JSON.stringify(images);
                         <p class="pt-8">
                             <slot />
                         </p>
+
+                        <div class="pt-8 flex gap-2 items-center justify-center flex-wrap">
+                            {logos.map((ref: string) => (
+                                <img
+                                    class={"inline-block h-8 px-1 my-1"}
+                                    src={`/img/logos/${ref}.svg`}
+                                    alt={`logo`}
+                                />
+                            ))}
+                        </div>
 
                         <div class="pt-8">
                             <GithubIcon color="var(--c-on-bg)" />
@@ -64,10 +103,6 @@ const images_str = JSON.stringify(images);
                                 )
                             }
                         </div>
-
-                        <!--
-                        <div class="pt-8">logos</div>
-                        -->
                     </div>
 
                     <div class="grid grid-cols-2 w-full gap-6">
@@ -91,7 +126,7 @@ const images_str = JSON.stringify(images);
                 </div>
 
                 <div
-                    class="relative w-full h-screen flex items-center justify-center p-16"
+                    class="relative w-full h-screen lg:flex items-center justify-center p-16 hidden"
                     x-data={`{img: ${images_str}, img_len: ${images.length}, idx: 0}`}
                 >
                     <button 
